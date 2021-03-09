@@ -1,38 +1,49 @@
 {
-  "name": "menes1337/3dcart-api-php-client",
-  "description": "PHP client library for accessing 3dCart Soap API, Soap Advanced API and REST API",
-  "keywords": [
-    "library",
-    "api",
-    "3dcart",
-    "soap",
-    "rest"
-  ],
-  "license": "MIT",
-  "config": {
-    "platform": {
-      "php": "5.6.31"
-    }
-  },
-  "authors": [
-    {
-      "name": "Oliver Müller",
-      "email": "oliver+github@ebuuk.de"
-    }
-  ],
-  "require-dev": {
-    "satooshi/php-coveralls": "*",
-    "phpunit/phpunit": "*",
-    "friendsofphp/php-cs-fixer": "*"
-  },
-  "autoload": {
-    "psr-4": {
-      "ThreeDCart\\": "src/",
-      "tests\\": "tests/"
-    }
-  },
-  "require": {
-    "php": ">=5.6",
-    "guzzlehttp/guzzle": "^6.2|^7.0"
-  }
+    "name": "menes1337/3dcart-api-php-client",
+    "description": "PHP client library for accessing 3dCart Soap API, Soap Advanced API and REST API",
+    "keywords": [
+        "library",
+        "api",
+        "3dcart",
+        "soap",
+        "rest"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oliver Müller",
+            "email": "oliver+github@ebuuk.de"
+        },
+        {
+            "name": "palPalani",
+            "email": "palani.p@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2|^8.0",
+        "guzzlehttp/guzzle": "^6.2|^7.0"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "*",
+        "orchestra/testbench": "^5.0|^6.0",
+        "phpunit/phpunit": "^7.0|^8.0|^9.3",
+        "vimeo/psalm": "^3.0|^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "ThreeDCart\\": "src/",
+            "tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -1,16 +1,19 @@
-[![Build Status](https://travis-ci.org/Menes1337/3dcart-api-php-client.svg?branch=master)](https://travis-ci.org/Menes1337/3dcart-api-php-client)
+# 3dCart PHP Api client
+
 [![codecov](https://codecov.io/gh/Menes1337/3dcart-api-php-client/branch/master/graph/badge.svg)](https://codecov.io/gh/Menes1337/3dcart-api-php-client)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/aab429ac8fb342de98cc3283d920a369)](https://www.codacy.com/app/Menes1337/3dcart-api-php-client?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Menes1337/3dcart-api-php-client&amp;utm_campaign=Badge_Grade)
-
-# 3dcart PHP Api-Client
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/palpalani/3dcart-api-php-client.svg?style=flat-square)](https://packagist.org/packages/palpalani/3dcart-api-php-client)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/palpalani/3dcart-api-php-client/run-tests?label=tests)](https://github.com/palpalani/3dcart-api-php-client/actions?query=workflow%3ATests+branch%3Amaster)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/palpalani/3dcart-api-php-client/Check%20&%20fix%20styling?label=code%20style)](https://github.com/palpalani/3dcart-api-php-client/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/palpalani/3dcart-api-php-client.svg?style=flat-square)](https://packagist.org/packages/palpalani/3dcart-api-php-client)
 
 ## Project properties
 
-Codestyle: PSR-1 (http://www.php-fig.org/psr/psr-1/) / PSR-2 (http://www.php-fig.org/psr/psr-2/)
+Code Style: PSR-1 (http://www.php-fig.org/psr/psr-1/) / PSR-2 (http://www.php-fig.org/psr/psr-2/)
 
 Autoloading: PSR-4 (http://www.php-fig.org/psr/psr-4/)
 
-Minimum PHP Version: 5.6
+Minimum PHP Version: 7.2
 
 ## Example usage
 
@@ -120,7 +123,34 @@ You are welcome to contribute!
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Make sure the codestyle (PSR-1 / PSR-2) is applied to your changes, your code is PHP Unit tested and can be executed on PHP 5.6/7.0/7.1
+3. Make sure the code style (PSR-1 / PSR-2) is applied to your changes, your code is PHP Unit tested and can be executed on PHP 5.6/7.0/7.1
 4. Commit your changes (`git commit -am 'Add some feature'`))
 5. Push to the branch (`git push origin my-new-feature`)
 6. Create a new pull request
+
+## Testing
+
+```bash
+composer test
+```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+
+## Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Credits
+
+- [palPalani](https://github.com/palPalani)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
