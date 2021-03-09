@@ -3,10 +3,9 @@
 namespace tests\Unit\Api\Soap\Resources;
 
 use tests\Unit\ThreeDCartTestCase;
-use ThreeDCart\Api\Soap\Resource\ParseException;
 use ThreeDCart\Api\Soap\Resource\Customer\AdditionalFields;
-use ThreeDCart\Api\Soap\Resource\Customer\Customer;
 use ThreeDCart\Api\Soap\Resource\Customer\Address;
+use ThreeDCart\Api\Soap\Resource\Customer\Customer;
 use ThreeDCart\Api\Soap\Resource\Customer\LoginToken;
 use ThreeDCart\Api\Soap\Resource\Order\AffiliateInformation;
 use ThreeDCart\Api\Soap\Resource\Order\CheckoutQuestion;
@@ -20,6 +19,7 @@ use ThreeDCart\Api\Soap\Resource\Order\Shipment;
 use ThreeDCart\Api\Soap\Resource\Order\ShippingInformation;
 use ThreeDCart\Api\Soap\Resource\Order\Status;
 use ThreeDCart\Api\Soap\Resource\Order\Transaction;
+use ThreeDCart\Api\Soap\Resource\ParseException;
 use ThreeDCart\Api\Soap\Resource\Product\Category;
 use ThreeDCart\Api\Soap\Resource\Product\EProduct;
 use ThreeDCart\Api\Soap\Resource\Product\ExtraFields;
@@ -103,8 +103,10 @@ class ResourceParserTest extends ThreeDCartTestCase
     public function testGetResourcesDataHalfEmpty()
     {
         $this->expectException(ParseException::class);
-        $this->resourceParser->getResources(new StringValueObject(Product::class),
-            new ArrayValueObject(['something' => []]));
+        $this->resourceParser->getResources(
+            new StringValueObject(Product::class),
+            new ArrayValueObject(['something' => []])
+        );
     }
     
     public function testGetResourceDataNull()
@@ -123,7 +125,7 @@ class ResourceParserTest extends ThreeDCartTestCase
     {
         $this->expectException(ParseException::class);
         $this->resourceParser->getResource(new StringValueObject(Product::class), new ArrayValueObject([
-            'some_not_available_field' => 'not available value'
+            'some_not_available_field' => 'not available value',
         ]));
     }
     
@@ -132,8 +134,8 @@ class ResourceParserTest extends ThreeDCartTestCase
         $this->expectException(ParseException::class);
         $this->resourceParser->getResources(new StringValueObject(Product::class), new ArrayValueObject([
             [
-                'some_not_available_field' => 'not available value'
-            ]
+                'some_not_available_field' => 'not available value',
+            ],
         ]));
     }
     
@@ -146,7 +148,7 @@ class ResourceParserTest extends ThreeDCartTestCase
      */
     public function testCreateResource($expectedClass, $mock, $mockPart)
     {
-        $data     = json_decode($this->loadMock($mock, $mockPart), true);
+        $data = json_decode($this->loadMock($mock, $mockPart), true);
         $resource =
             $this->resourceParser->getResource(new StringValueObject($expectedClass), new ArrayValueObject($data));
         
@@ -164,13 +166,15 @@ class ResourceParserTest extends ThreeDCartTestCase
     {
         $data = json_decode($this->loadMock($mock, $mockPart), true);
         
-        $multipleData = array(
+        $multipleData = [
             $data,
-            $data
-        );
+            $data,
+        ];
         
-        $resources = $this->resourceParser->getResources(new StringValueObject($expectedClass),
-            new ArrayValueObject($multipleData));
+        $resources = $this->resourceParser->getResources(
+            new StringValueObject($expectedClass),
+            new ArrayValueObject($multipleData)
+        );
         
         $this->assertEquals(2, count($resources));
         
@@ -182,145 +186,145 @@ class ResourceParserTest extends ThreeDCartTestCase
     public function getResourceFromArrayProvider()
     {
         return [
-            'Product'                          => [
+            'Product' => [
                 Product::class,
                 'Product',
-                'Product.json'
+                'Product.json',
             ],
-            'Customer'                         => [
+            'Customer' => [
                 Customer::class,
                 'Customer',
-                'Customer.json'
+                'Customer.json',
             ],
-            'Customer - LoginToken'            => [
+            'Customer - LoginToken' => [
                 LoginToken::class,
                 'CustomerLoginToken',
-                'LoginToken.json'
+                'LoginToken.json',
             ],
-            'Customer - Address'               => [
+            'Customer - Address' => [
                 Address::class,
                 'CustomerAddress',
-                'Address.json'
+                'Address.json',
             ],
-            'Customer - AdditionalFields'      => [
+            'Customer - AdditionalFields' => [
                 AdditionalFields::class,
                 'CustomerAdditionalFields',
-                'AdditionalFields.json'
+                'AdditionalFields.json',
             ],
-            'Product - Category'               => [
+            'Product - Category' => [
                 Category::class,
                 'ProductCategory',
-                'Category.json'
+                'Category.json',
             ],
-            'Product - EProduct'               => [
+            'Product - EProduct' => [
                 EProduct::class,
                 'ProductEProduct',
-                'EProduct.json'
+                'EProduct.json',
             ],
-            'Product - ExtraFields'            => [
+            'Product - ExtraFields' => [
                 ExtraFields::class,
                 'ProductExtraFields',
-                'ExtraFields.json'
+                'ExtraFields.json',
             ],
-            'Product - Image'                  => [
+            'Product - Image' => [
                 Image::class,
                 'ProductImage',
-                'Image.json'
+                'Image.json',
             ],
-            'Product - Images'                 => [
+            'Product - Images' => [
                 Images::class,
                 'ProductImages',
-                'Images.json'
+                'Images.json',
             ],
-            'Product - OptionValue'            => [
+            'Product - OptionValue' => [
                 OptionValue::class,
                 'ProductOptionValue',
-                'OptionValue.json'
+                'OptionValue.json',
             ],
-            'Product - Option'                 => [
+            'Product - Option' => [
                 Option::class,
                 'ProductOption',
-                'Option.json'
+                'Option.json',
             ],
-            'Product - PriceLevel'             => [
+            'Product - PriceLevel' => [
                 PriceLevel::class,
                 'ProductPriceLevel',
-                'PriceLevel.json'
+                'PriceLevel.json',
             ],
-            'Product - RelatedProduct'         => [
+            'Product - RelatedProduct' => [
                 RelatedProduct::class,
                 'ProductRelatedProduct',
-                'RelatedProduct.json'
+                'RelatedProduct.json',
             ],
-            'Product - Reward'                 => [
+            'Product - Reward' => [
                 Reward::class,
                 'ProductReward',
-                'Reward.json'
+                'Reward.json',
             ],
-            'Product - Inventory'              => [
+            'Product - Inventory' => [
                 ProductInventory::class,
                 'ProductInventory',
-                'Inventory.json'
+                'Inventory.json',
             ],
-            'Order'                            => [
+            'Order' => [
                 Order::class,
                 'Order',
-                'Order.json'
+                'Order.json',
             ],
-            'Order - Comments'                 => [
+            'Order - Comments' => [
                 Comments::class,
                 'OrderComments',
-                'Comments.json'
+                'Comments.json',
             ],
-            'Order - AffiliateInformation'     => [
+            'Order - AffiliateInformation' => [
                 AffiliateInformation::class,
                 'OrderAffiliateInformation',
-                'AffiliateInformation.json'
+                'AffiliateInformation.json',
             ],
             'Order - GiftCertificatePurchased' => [
                 GiftCertificatePurchased::class,
                 'OrderGiftCertificatePurchased',
-                'GiftCertificatePurchased.json'
+                'GiftCertificatePurchased.json',
             ],
-            'Order - GiftCertificateUsed'      => [
+            'Order - GiftCertificateUsed' => [
                 GiftCertificateUsed::class,
                 'OrderGiftCertificateUsed',
-                'GiftCertificateUsed.json'
+                'GiftCertificateUsed.json',
             ],
-            'Order - Item'                     => [
+            'Order - Item' => [
                 Item::class,
                 'OrderItem',
-                'Item.json'
+                'Item.json',
             ],
-            'Order - Promotion'                => [
+            'Order - Promotion' => [
                 Promotion::class,
                 'OrderPromotion',
-                'Promotion.json'
+                'Promotion.json',
             ],
-            'Order - Shipment'                 => [
+            'Order - Shipment' => [
                 Shipment::class,
                 'OrderShipment',
-                'Shipment.json'
+                'Shipment.json',
             ],
-            'Order - ShippingInformation'      => [
+            'Order - ShippingInformation' => [
                 ShippingInformation::class,
                 'OrderShippingInformation',
-                'ShippingInformation.json'
+                'ShippingInformation.json',
             ],
-            'Order - Transaction'              => [
+            'Order - Transaction' => [
                 Transaction::class,
                 'OrderTransaction',
-                'Transaction.json'
+                'Transaction.json',
             ],
-            'Order - OrderStatus'              => [
+            'Order - OrderStatus' => [
                 Status::class,
                 'OrderStatus',
-                'Status.json'
+                'Status.json',
             ],
-            'Order - CheckoutQuestion'         => [
+            'Order - CheckoutQuestion' => [
                 CheckoutQuestion::class,
                 'OrderCheckoutQuestion',
-                'CheckoutQuestion.json'
+                'CheckoutQuestion.json',
             ],
         ];
     }

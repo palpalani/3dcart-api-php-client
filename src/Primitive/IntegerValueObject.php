@@ -19,7 +19,7 @@ class IntegerValueObject
      */
     public function __construct($value)
     {
-        if (!is_int($value) && !is_float($value) && !is_string($value)) {
+        if (! is_int($value) && ! is_float($value) && ! is_string($value)) {
             throw new \InvalidArgumentException(
                 'parameter $value is not of type int. type is ' . gettype($value)
             );

@@ -30,7 +30,7 @@ class RequestException extends \Exception
         );
         
         $this->httpStatusCode = $httpStatusCode;
-        $this->responseBody   = $responseBody;
+        $this->responseBody = $responseBody;
     }
     
     /**

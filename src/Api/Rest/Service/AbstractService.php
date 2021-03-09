@@ -44,9 +44,9 @@ class AbstractService
         SortInterface $sortOrderList = null
     ) {
         $requestParameterList =
-            !is_null($filterList) ? $filterList->getHttpParameterList() : new HttpParameterList();
+            ! is_null($filterList) ? $filterList->getHttpParameterList() : new HttpParameterList();
         
-        if ($sortOrderList !== null && !$sortOrderList->isEmpty()->getBoolValue()) {
+        if ($sortOrderList !== null && ! $sortOrderList->isEmpty()->getBoolValue()) {
             $requestParameterList->addParameter(
                 new HttpParameter(
                     new StringValueObject('$orderby'),
@@ -55,7 +55,7 @@ class AbstractService
             );
         }
         
-        if ($selectList !== null && !$selectList->isEmpty()->getBoolValue()) {
+        if ($selectList !== null && ! $selectList->isEmpty()->getBoolValue()) {
             $requestParameterList->addParameter(
                 new HttpParameter(
                     new StringValueObject('$select'),

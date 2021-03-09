@@ -16,7 +16,7 @@ class SqlFieldList
     
     public function __construct()
     {
-        $this->list = array();
+        $this->list = [];
     }
     
     /**
@@ -42,7 +42,7 @@ class SqlFieldList
      */
     public function toString()
     {
-        $fields = array();
+        $fields = [];
         foreach ($this->list as $listEntry) {
             $fields[] = $listEntry->getName()->getStringValue();
         }

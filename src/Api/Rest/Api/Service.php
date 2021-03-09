@@ -6,17 +6,17 @@ use ThreeDCart\Primitive\Enum;
 
 class Service extends Enum
 {
-    const CATEGORIES      = 'Categories';
-    const RMA             = 'RMA';
+    const CATEGORIES = 'Categories';
+    const RMA = 'RMA';
     const CUSTOMER_GROUPS = 'CustomerGroups';
     const GIFT_REGISTRIES = 'GiftRegistries';
-    const CUSTOMERS       = 'Customers';
-    const DISTRIBUTORS    = 'Distributors';
-    const PRODUCTS        = 'Products';
-    const MANUFACTURER    = 'Manufacturer';
-    const ORDERS          = 'Orders';
+    const CUSTOMERS = 'Customers';
+    const DISTRIBUTORS = 'Distributors';
+    const PRODUCTS = 'Products';
+    const MANUFACTURER = 'Manufacturer';
+    const ORDERS = 'Orders';
     
-    public static $allowedValues = array(
+    public static $allowedValues = [
         self::CATEGORIES,
         self::CUSTOMER_GROUPS,
         self::CUSTOMERS,
@@ -25,8 +25,8 @@ class Service extends Enum
         self::MANUFACTURER,
         self::ORDERS,
         self::PRODUCTS,
-        self::RMA
-    );
+        self::RMA,
+    ];
     
     /**
      * @return string

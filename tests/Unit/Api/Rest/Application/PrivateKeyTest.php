@@ -29,8 +29,8 @@ class PrivateKeyTest extends ThreeDCartTestCase
     {
         return [
             'empty string' => [
-                ''
-            ]
+                '',
+            ],
         ];
     }
 }

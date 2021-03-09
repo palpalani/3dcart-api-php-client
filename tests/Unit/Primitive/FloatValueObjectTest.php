@@ -29,26 +29,26 @@ class FloatValueObjectTest extends ThreeDCartTestCase
     public function provideNegativeCases()
     {
         return [
-            'object'           => [
-                new \stdClass()
+            'object' => [
+                new \stdClass(),
             ],
-            'string #invalid'  => [
-                'invalid argument'
+            'string #invalid' => [
+                'invalid argument',
             ],
-            'boolean #0'       => [
-                false
+            'boolean #0' => [
+                false,
             ],
-            'boolean #1'       => [
-                true
+            'boolean #1' => [
+                true,
             ],
-            'array'            => [
-                array()
+            'array' => [
+                [],
             ],
-            'null'             => [
-                null
+            'null' => [
+                null,
             ],
-            'empty string'     => [
-                ''
+            'empty string' => [
+                '',
             ],
         ];
     }
@@ -72,29 +72,29 @@ class FloatValueObjectTest extends ThreeDCartTestCase
     public function providePositiveCases()
     {
         return [
-            'int'               => [
+            'int' => [
                 5.0,
-                5
+                5,
             ],
-            'double'            => [
+            'double' => [
                 3.0,
-                3.0
+                3.0,
             ],
             'precision double' => [
                 3.4,
-                3.4
+                3.4,
             ],
             'string without precision' => [
                 5.0,
-                '5'
+                '5',
             ],
             'string zero' => [
                 0.0,
-                '0'
+                '0',
             ],
             'string with precision' => [
                 3.3,
-                '3.3'
+                '3.3',
             ],
         ];
     }

@@ -29,8 +29,8 @@ class TokenTest extends ThreeDCartTestCase
     {
         return [
             'empty string' => [
-                ''
-            ]
+                '',
+            ],
         ];
     }
 }

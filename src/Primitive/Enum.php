@@ -9,7 +9,7 @@ namespace ThreeDCart\Primitive;
  */
 abstract class Enum
 {
-    public static $allowedValues = array();
+    public static $allowedValues = [];
     
     /** @var mixed */
     private $value;
@@ -25,7 +25,7 @@ abstract class Enum
             );
         }
         
-        if (!in_array($value, static::$allowedValues, true)) {
+        if (! in_array($value, static::$allowedValues, true)) {
             throw new \InvalidArgumentException(
                 'passed a not valid argument of type: ' . gettype($value)
             );

@@ -19,19 +19,19 @@ use ThreeDCart\Primitive\StringValueObject;
  */
 class PhpDefaultClient implements ClientInterface
 {
-    const THREEDCART_GET_PRODUCT_RESULT_FIELD              = 'getProductResult';
-    const THREEDCART_GET_CUSTOMER_RESULT_FIELD             = 'getCustomerResult';
-    const THREEDCART_GET_ORDER_STATUS_RESULT_FIELD         = 'getOrderStatusResult';
-    const THREEDCART_GET_PRODUCT_COUNT_RESULT_FIELD        = 'getProductCountResult';
-    const THREEDCART_GET_PRODUCT_INVENTORY_RESULT_FIELD    = 'getProductInventoryResult';
+    const THREEDCART_GET_PRODUCT_RESULT_FIELD = 'getProductResult';
+    const THREEDCART_GET_CUSTOMER_RESULT_FIELD = 'getCustomerResult';
+    const THREEDCART_GET_ORDER_STATUS_RESULT_FIELD = 'getOrderStatusResult';
+    const THREEDCART_GET_PRODUCT_COUNT_RESULT_FIELD = 'getProductCountResult';
+    const THREEDCART_GET_PRODUCT_INVENTORY_RESULT_FIELD = 'getProductInventoryResult';
     const THREEDCART_GET_CUSTOMER_LOGIN_TOKEN_RESULT_FIELD = 'getCustomerLoginTokenResult';
-    const THREEDCART_GET_CUSTOMER_COUNT_RESULT_FIELD       = 'getCustomerCountResult';
-    const THREEDCART_GET_ORDER_COUNT_RESULT_FIELD          = 'getOrderCountResult';
-    const THREEDCART_GET_ORDER_RESULT_FIELD                = 'getOrderResult';
+    const THREEDCART_GET_CUSTOMER_COUNT_RESULT_FIELD = 'getCustomerCountResult';
+    const THREEDCART_GET_ORDER_COUNT_RESULT_FIELD = 'getOrderCountResult';
+    const THREEDCART_GET_ORDER_RESULT_FIELD = 'getOrderResult';
     const THREEDCART_UPDATE_PRODUCT_INVENTORY_RESULT_FIELD = 'updateProductInventoryResult';
-    const THREEDCART_UPDATE_ORDER_STATUS_RESULT_FIELD      = 'updateOrderStatusResult';
-    const THREEDCART_UPDATE_ORDER_SHIPMENT_RESULT_FIELD    = 'updateOrderShipmentResult';
-    const THREEDCART_EDIT_CUSTOMER_RESULT_FIELD            = 'editCustomerResult';
+    const THREEDCART_UPDATE_ORDER_STATUS_RESULT_FIELD = 'updateOrderStatusResult';
+    const THREEDCART_UPDATE_ORDER_SHIPMENT_RESULT_FIELD = 'updateOrderShipmentResult';
+    const THREEDCART_EDIT_CUSTOMER_RESULT_FIELD = 'editCustomerResult';
     
     /** @var StringValueObject */
     private $threeDCartApiKey;
@@ -54,10 +54,10 @@ class PhpDefaultClient implements ClientInterface
         StringValueObject $threeDCartStoreUrl,
         StringValueObject $threeDCartApiKey
     ) {
-        $this->responseHandler    = $responseHandler;
+        $this->responseHandler = $responseHandler;
         $this->threeDCartStoreUrl = $threeDCartStoreUrl;
-        $this->threeDCartApiKey   = $threeDCartApiKey;
-        $this->soapClient         = $soapClient;
+        $this->threeDCartApiKey = $threeDCartApiKey;
+        $this->soapClient = $soapClient;
     }
     
     public function getProduct(
@@ -67,14 +67,14 @@ class PhpDefaultClient implements ClientInterface
         CallBackUrl $callBackUrl
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->getProduct(array(
-            'storeUrl'    => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'     => $this->threeDCartApiKey->getStringValue(),
-            'batchSize'   => $batchSize->getIntValue(),
-            'startNum'    => $startNum->getIntValue(),
-            'productId'   => $productId->getStringValue(),
-            'callBackURL' => $callBackUrl->getStringValue()
-        ));
+        $soapResponse = $this->soapClient->getProduct([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'batchSize' => $batchSize->getIntValue(),
+            'startNum' => $startNum->getIntValue(),
+            'productId' => $productId->getStringValue(),
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse($soapResponse, new StringValueObject(self::THREEDCART_GET_PRODUCT_RESULT_FIELD));
         
@@ -109,14 +109,14 @@ class PhpDefaultClient implements ClientInterface
         CallBackUrl $callBackUrl
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->getCustomer(array(
-            'storeUrl'        => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'         => $this->threeDCartApiKey->getStringValue(),
-            'batchSize'       => $batchSize->getIntValue(),
-            'startNum'        => $startNum->getIntValue(),
+        $soapResponse = $this->soapClient->getCustomer([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'batchSize' => $batchSize->getIntValue(),
+            'startNum' => $startNum->getIntValue(),
             'customersFilter' => $customersFilter->getStringValue(),
-            'callBackURL'     => $callBackUrl->getStringValue()
-        ));
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse($soapResponse, new StringValueObject(self::THREEDCART_GET_CUSTOMER_RESULT_FIELD));
         
@@ -126,12 +126,12 @@ class PhpDefaultClient implements ClientInterface
     public function getOrderStatus(StringValueObject $invoiceNum, CallBackUrl $callBackUrl)
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->getOrderStatus(array(
-            'storeUrl'    => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'     => $this->threeDCartApiKey->getStringValue(),
-            'invoiceNum'  => $invoiceNum->getStringValue(),
-            'callBackURL' => $callBackUrl->getStringValue()
-        ));
+        $soapResponse = $this->soapClient->getOrderStatus([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'invoiceNum' => $invoiceNum->getStringValue(),
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse($soapResponse, new StringValueObject(self::THREEDCART_GET_ORDER_RESULT_FIELD));
         
@@ -141,11 +141,11 @@ class PhpDefaultClient implements ClientInterface
     public function getProductCount(CallBackUrl $callBackUrl)
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->getProductCount(array(
-            'storeUrl'    => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'     => $this->threeDCartApiKey->getStringValue(),
-            'callBackURL' => $callBackUrl->getStringValue()
-        ));
+        $soapResponse = $this->soapClient->getProductCount([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,
@@ -158,12 +158,12 @@ class PhpDefaultClient implements ClientInterface
     public function getProductInventory(StringValueObject $productId, CallBackUrl $callBackUrl)
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->getProductInventory(array(
-            'storeUrl'    => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'     => $this->threeDCartApiKey->getStringValue(),
-            'productId'   => $productId->getStringValue(),
-            'callBackURL' => $callBackUrl->getStringValue()
-        ));
+        $soapResponse = $this->soapClient->getProductInventory([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'productId' => $productId->getStringValue(),
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,
@@ -179,13 +179,13 @@ class PhpDefaultClient implements ClientInterface
         CallBackUrl $callBackUrl
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->getCustomerLoginToken(array(
-            'storeUrl'      => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'       => $this->threeDCartApiKey->getStringValue(),
+        $soapResponse = $this->soapClient->getCustomerLoginToken([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
             'customerEmail' => $customerEmail->getStringValue(),
-            'timeToLive'    => $timeToLive->getIntValue(),
-            'callBackURL'   => $callBackUrl->getStringValue()
-        ));
+            'timeToLive' => $timeToLive->getIntValue(),
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,
@@ -198,11 +198,11 @@ class PhpDefaultClient implements ClientInterface
     public function getCustomerCount(CallBackUrl $callBackUrl)
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->getCustomerCount(array(
-            'storeUrl'    => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'     => $this->threeDCartApiKey->getStringValue(),
-            'callBackURL' => $callBackUrl->getStringValue()
-        ));
+        $soapResponse = $this->soapClient->getCustomerCount([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,
@@ -218,13 +218,13 @@ class PhpDefaultClient implements ClientInterface
         CallBackUrl $callBackUrl
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->editCustomer(array(
-            'storeUrl'     => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'      => $this->threeDCartApiKey->getStringValue(),
+        $soapResponse = $this->soapClient->editCustomer([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
             'customerData' => $customerData->getStringValue(),
-            'action'       => $action->getValue(),
-            'callBackURL'  => $callBackUrl->getStringValue()
-        ));
+            'action' => $action->getValue(),
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,
@@ -243,16 +243,16 @@ class PhpDefaultClient implements ClientInterface
         CallBackUrl $callBackUrl = null
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->getOrderCount(array(
-            'storeUrl'    => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'     => $this->threeDCartApiKey->getStringValue(),
-            'startFrom'   => $startFrom->getBoolValue(),
-            'invoiceNum'  => $invoiceNum->getStringValue(),
-            'status'      => $status->getStringValue(),
-            'dateFrom'    => !empty($dateFrom) ? $dateFrom->format(DateFormat::THREE_D_CART_API_DATE_FORMAT) : '',
-            'dateTo'      => !empty($dateTo) ? $dateTo->format(DateFormat::THREE_D_CART_API_DATE_FORMAT) : '',
-            'callBackURL' => !empty($callBackUrl) ? $callBackUrl->getStringValue() : ''
-        ));
+        $soapResponse = $this->soapClient->getOrderCount([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'startFrom' => $startFrom->getBoolValue(),
+            'invoiceNum' => $invoiceNum->getStringValue(),
+            'status' => $status->getStringValue(),
+            'dateFrom' => ! empty($dateFrom) ? $dateFrom->format(DateFormat::THREE_D_CART_API_DATE_FORMAT) : '',
+            'dateTo' => ! empty($dateTo) ? $dateTo->format(DateFormat::THREE_D_CART_API_DATE_FORMAT) : '',
+            'callBackURL' => ! empty($callBackUrl) ? $callBackUrl->getStringValue() : '',
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,
@@ -273,18 +273,18 @@ class PhpDefaultClient implements ClientInterface
         CallBackUrl $callBackUrl = null
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->getOrder(array(
-            'storeUrl'    => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'     => $this->threeDCartApiKey->getStringValue(),
-            'batchSize'   => $batchSize->getIntValue(),
-            'startNum'    => $startNum->getIntValue(),
-            'startFrom'   => $startFrom->getBoolValue(),
-            'invoiceNum'  => $invoiceNum->getStringValue(),
-            'status'      => $status->getStringValue(),
-            'dateFrom'    => !empty($dateFrom) ? $dateFrom->format(DateFormat::THREE_D_CART_API_DATE_FORMAT) : '',
-            'dateTo'      => !empty($dateTo) ? $dateTo->format(DateFormat::THREE_D_CART_API_DATE_FORMAT) : '',
-            'callBackURL' => !empty($callBackUrl) ? $callBackUrl->getStringValue() : ''
-        ));
+        $soapResponse = $this->soapClient->getOrder([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'batchSize' => $batchSize->getIntValue(),
+            'startNum' => $startNum->getIntValue(),
+            'startFrom' => $startFrom->getBoolValue(),
+            'invoiceNum' => $invoiceNum->getStringValue(),
+            'status' => $status->getStringValue(),
+            'dateFrom' => ! empty($dateFrom) ? $dateFrom->format(DateFormat::THREE_D_CART_API_DATE_FORMAT) : '',
+            'dateTo' => ! empty($dateTo) ? $dateTo->format(DateFormat::THREE_D_CART_API_DATE_FORMAT) : '',
+            'callBackURL' => ! empty($callBackUrl) ? $callBackUrl->getStringValue() : '',
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,
@@ -301,14 +301,14 @@ class PhpDefaultClient implements ClientInterface
         CallBackUrl $callBackUrl
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->updateProductInventory(array(
-            'storeUrl'     => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'      => $this->threeDCartApiKey->getStringValue(),
-            'productId'    => $productId->getStringValue(),
-            'quantity'     => $quantity->getIntValue(),
+        $soapResponse = $this->soapClient->updateProductInventory([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'productId' => $productId->getStringValue(),
+            'quantity' => $quantity->getIntValue(),
             'replaceStock' => $replaceStock->getBoolValue(),
-            'callBackURL'  => $callBackUrl->getStringValue()
-        ));
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,
@@ -324,13 +324,13 @@ class PhpDefaultClient implements ClientInterface
         CallBackUrl $callBackUrl
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->updateOrderStatus(array(
-            'storeUrl'    => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'     => $this->threeDCartApiKey->getStringValue(),
-            'invoiceNum'  => $invoiceNum->getStringValue(),
-            'newStatus'   => $newStatus->getStringValue(),
-            'callBackURL' => $callBackUrl->getStringValue()
-        ));
+        $soapResponse = $this->soapClient->updateOrderStatus([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'invoiceNum' => $invoiceNum->getStringValue(),
+            'newStatus' => $newStatus->getStringValue(),
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,
@@ -348,15 +348,15 @@ class PhpDefaultClient implements ClientInterface
         CallBackUrl $callBackUrl
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->updateOrderShipment(array(
-            'storeUrl'     => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'      => $this->threeDCartApiKey->getStringValue(),
-            'invoiceNum'   => $invoiceNum->getStringValue(),
-            'shipmentID'   => $shipmentID->getStringValue(),
-            'tracking'     => $tracking->getStringValue(),
+        $soapResponse = $this->soapClient->updateOrderShipment([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
+            'invoiceNum' => $invoiceNum->getStringValue(),
+            'shipmentID' => $shipmentID->getStringValue(),
+            'tracking' => $tracking->getStringValue(),
             'shipmentDate' => $shipmentDate->format(DateFormat::THREE_D_CART_API_DATE_FORMAT),
-            'callBackURL'  => $callBackUrl->getStringValue()
-        ));
+            'callBackURL' => $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse(
             $soapResponse,

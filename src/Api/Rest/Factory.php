@@ -53,7 +53,7 @@ class Factory
             new Guzzle(
                 new Client([
                     'base_uri' => self::THREEDCART_SOAP_API_URL . $apiVersion->getValue() . '/' . Service::CUSTOMERS
-                        . '/'
+                        . '/',
                 ]),
                 $authenticationService
             )
@@ -73,7 +73,7 @@ class Factory
                 new Client([
                     'base_uri' => self::THREEDCART_SOAP_API_URL . $apiVersion->getValue() . '/'
                         . Service::CUSTOMER_GROUPS
-                        . '/'
+                        . '/',
                 ]),
                 $authenticationService
             )
@@ -92,7 +92,7 @@ class Factory
             new Guzzle(
                 new Client([
                     'base_uri' => self::THREEDCART_SOAP_API_URL . $apiVersion->getValue() . '/' . Service::CATEGORIES
-                        . '/'
+                        . '/',
                 ]),
                 $authenticationService
             )
@@ -111,7 +111,7 @@ class Factory
             new Guzzle(
                 new Client([
                     'base_uri' => self::THREEDCART_SOAP_API_URL . $apiVersion->getValue() . '/' . Service::PRODUCTS
-                        . '/'
+                        . '/',
                 ]),
                 $authenticationService
             )
@@ -130,7 +130,7 @@ class Factory
             new Guzzle(
                 new Client([
                     'base_uri' => self::THREEDCART_SOAP_API_URL . $apiVersion->getValue() . '/' . Service::ORDERS
-                        . '/'
+                        . '/',
                 ]),
                 $authenticationService
             )

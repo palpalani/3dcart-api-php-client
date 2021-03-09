@@ -22,11 +22,14 @@ class AbstractListTest extends ThreeDCartTestCase
     public function testCounting()
     {
         $this->assertEquals(0, $this->subjectUnderTest->count()->getIntValue());
-        $this->invokeMethod($this->subjectUnderTest, 'addEntry', [
+        $this->invokeMethod(
+            $this->subjectUnderTest,
+            'addEntry',
+            [
                 new HttpParameter(
                     new StringValueObject('testKey'),
                     new StringValueObject('testValue')
-                )
+                ),
             ]
         );
         $this->assertEquals(1, $this->subjectUnderTest->count()->getIntValue());
@@ -35,11 +38,14 @@ class AbstractListTest extends ThreeDCartTestCase
     public function testIsEmpty()
     {
         $this->assertEquals(true, $this->subjectUnderTest->isEmpty()->getBoolValue());
-        $this->invokeMethod($this->subjectUnderTest, 'addEntry', [
+        $this->invokeMethod(
+            $this->subjectUnderTest,
+            'addEntry',
+            [
                 new HttpParameter(
                     new StringValueObject('testKey'),
                     new StringValueObject('testValue')
-                )
+                ),
             ]
         );
         $this->assertEquals(false, $this->subjectUnderTest->isEmpty()->getBoolValue());
@@ -48,11 +54,14 @@ class AbstractListTest extends ThreeDCartTestCase
     public function testClear()
     {
         $this->assertEquals(true, $this->subjectUnderTest->isEmpty()->getBoolValue());
-        $this->invokeMethod($this->subjectUnderTest, 'addEntry', [
+        $this->invokeMethod(
+            $this->subjectUnderTest,
+            'addEntry',
+            [
                 new HttpParameter(
                     new StringValueObject('testKey'),
                     new StringValueObject('testValue')
-                )
+                ),
             ]
         );
         

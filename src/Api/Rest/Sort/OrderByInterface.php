@@ -6,7 +6,6 @@ use ThreeDCart\Primitive\StringValueObject;
 
 interface OrderByInterface
 {
-    
     /**
      * @return StringValueObject
      */

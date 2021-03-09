@@ -2,8 +2,8 @@
 
 namespace ThreeDCart\Api\Rest\Filter;
 
-use ThreeDCart\Api\Rest\Request\HttpParameterList;
 use ThreeDCart\Api\Rest\Request\HttpParameter;
+use ThreeDCart\Api\Rest\Request\HttpParameterList;
 use ThreeDCart\Primitive\BooleanValueObject;
 use ThreeDCart\Primitive\IntegerValueObject;
 use ThreeDCart\Primitive\StringValueObject;
@@ -14,7 +14,7 @@ use ThreeDCart\Primitive\StringValueObject;
 abstract class AbstractFilterList
 {
     /** @var array this needs to be overwritten in the sub class */
-    public static $filter = array('example');
+    public static $filter = ['example'];
     
     /** @var [string, StringValueObject] */
     protected $list;

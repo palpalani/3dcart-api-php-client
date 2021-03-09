@@ -3,8 +3,8 @@
 namespace ThreeDCart\Api\Soap\Resource;
 
 use ThreeDCart\Api\Soap\Resource\Customer\AdditionalFields;
-use ThreeDCart\Api\Soap\Resource\Customer\Customer;
 use ThreeDCart\Api\Soap\Resource\Customer\Address;
+use ThreeDCart\Api\Soap\Resource\Customer\Customer;
 use ThreeDCart\Api\Soap\Resource\Customer\LoginToken;
 use ThreeDCart\Api\Soap\Resource\Order\AffiliateInformation;
 use ThreeDCart\Api\Soap\Resource\Order\CheckoutQuestion;

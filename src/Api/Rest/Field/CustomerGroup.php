@@ -4,16 +4,16 @@ namespace ThreeDCart\Api\Rest\Field;
 
 class Customer extends AbstractField
 {
-    const CUSTOMERGROUPID     = "CustomerGroupID";
-    const NAME                = "Name";
-    const DESCRIPTION         = "Description";
-    const MINIMUMORDER        = "MinimumOrder";
-    const NONTAXABLE          = "NonTaxable";
-    const ALLOWREGISTRATION   = "AllowRegistration";
+    const CUSTOMERGROUPID = "CustomerGroupID";
+    const NAME = "Name";
+    const DESCRIPTION = "Description";
+    const MINIMUMORDER = "MinimumOrder";
+    const NONTAXABLE = "NonTaxable";
+    const ALLOWREGISTRATION = "AllowRegistration";
     const DISABLEREWARDPOINTS = "DisableRewardPoints";
-    const AUTOAPPROVE         = "AutoApprove";
+    const AUTOAPPROVE = "AutoApprove";
     const REGISTRATIONMESSAGE = "RegistrationMessage";
-    const PRICELEVEL          = "PriceLevel";
+    const PRICELEVEL = "PriceLevel";
     
     public static $allowedValues = [
         self::CUSTOMERGROUPID,
@@ -25,6 +25,6 @@ class Customer extends AbstractField
         self::DISABLEREWARDPOINTS,
         self::AUTOAPPROVE,
         self::REGISTRATIONMESSAGE,
-        self::PRICELEVEL
+        self::PRICELEVEL,
     ];
 }

@@ -12,10 +12,10 @@ use ThreeDCart\Primitive\UnsignedIntegerValueObject;
  */
 class CategoryFilter extends AbstractFilter implements CategoryFilterInterface
 {
-    const FILTER_LIMIT        = "limit";
-    const FILTER_OFFSET       = "offset";
+    const FILTER_LIMIT = "limit";
+    const FILTER_OFFSET = "offset";
     const FILTER_CATEGORYNAME = "category";
-    const FILTER_COUNTONLY    = "countonly";
+    const FILTER_COUNTONLY = "countonly";
     
     public static $filter = [
         self::FILTER_LIMIT,

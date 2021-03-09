@@ -23,7 +23,7 @@ class ThreeDCartTestCase extends \PHPUnit_Framework_TestCase
     protected function createMockedHttpClient($mock)
     {
         $mock = new MockHandler([
-            $this->createMockedResponse($mock)
+            $this->createMockedResponse($mock),
         ]);
         
         return new HttpClient(['handler' => HandlerStack::create($mock)]);
@@ -57,9 +57,11 @@ class ThreeDCartTestCase extends \PHPUnit_Framework_TestCase
         $className = explode('\\', get_class($this));
         array_shift($className);
         unset($className[0]);
-        $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Mocks' . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR,
-                $className) . DIRECTORY_SEPARATOR . $mock . DIRECTORY_SEPARATOR . $part;
-        if (!file_exists($path)) {
+        $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Mocks' . DIRECTORY_SEPARATOR . implode(
+            DIRECTORY_SEPARATOR,
+            $className
+        ) . DIRECTORY_SEPARATOR . $mock . DIRECTORY_SEPARATOR . $part;
+        if (! file_exists($path)) {
             throw new \Exception('Mock files are missing: ' . $mock . ' : ' . $part);
         }
         
@@ -83,7 +85,7 @@ class ThreeDCartTestCase extends \PHPUnit_Framework_TestCase
      *
      * @return mixed Method return.
      */
-    public function invokeMethod(&$object, $methodName, array $parameters = array())
+    public function invokeMethod(&$object, $methodName, array $parameters = [])
     {
         $reflection = new \ReflectionClass(get_class($object));
         $method = $reflection->getMethod($methodName);

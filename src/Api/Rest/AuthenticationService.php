@@ -14,9 +14,9 @@ use ThreeDCart\Api\Rest\Shop\Token;
  */
 class AuthenticationService implements AuthenticationServiceInterface
 {
-    const HTTP_HEADER_SECURE_URL  = 'SecureUrl';
+    const HTTP_HEADER_SECURE_URL = 'SecureUrl';
     const HTTP_HEADER_PRIVATE_KEY = 'PrivateKey';
-    const HTTP_HEADER_TOKEN       = 'Token';
+    const HTTP_HEADER_TOKEN = 'Token';
     
     /** @var PrivateKey */
     private $privateKey;
@@ -35,8 +35,8 @@ class AuthenticationService implements AuthenticationServiceInterface
     public function __construct(PrivateKey $privateKey, Token $token, SecureUrl $secureUrl)
     {
         $this->privateKey = $privateKey;
-        $this->token      = $token;
-        $this->secureUrl  = $secureUrl;
+        $this->token = $token;
+        $this->secureUrl = $secureUrl;
     }
     
     /**
@@ -45,9 +45,9 @@ class AuthenticationService implements AuthenticationServiceInterface
     public function getHttpHeaders()
     {
         return new HttpHeader([
-            self::HTTP_HEADER_SECURE_URL  => $this->secureUrl->getStringValue(),
+            self::HTTP_HEADER_SECURE_URL => $this->secureUrl->getStringValue(),
             self::HTTP_HEADER_PRIVATE_KEY => $this->privateKey->getStringValue(),
-            self::HTTP_HEADER_TOKEN       => $this->token->getStringValue()
+            self::HTTP_HEADER_TOKEN => $this->token->getStringValue(),
         ]);
     }
 }

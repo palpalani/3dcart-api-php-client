@@ -4,8 +4,8 @@ namespace tests\Unit\Api\Rest\Sort;
 
 use tests\Unit\ThreeDCartTestCase;
 use ThreeDCart\Api\Rest\Sort\OrderByInterface;
-use ThreeDCart\Api\Rest\Sort\SortOrder;
 use ThreeDCart\Api\Rest\Sort\SortList;
+use ThreeDCart\Api\Rest\Sort\SortOrder;
 use ThreeDCart\Primitive\StringValueObject;
 
 /**
@@ -43,8 +43,10 @@ class SortListTest extends ThreeDCartTestCase
             new SortOrder(SortOrder::SORTING_DESC)
         ));
         
-        $this->assertEquals(new StringValueObject('first_order_by asc,second_order_by desc'),
-            $this->subjectUnderTest->getQueryString());
+        $this->assertEquals(
+            new StringValueObject('first_order_by asc,second_order_by desc'),
+            $this->subjectUnderTest->getQueryString()
+        );
     }
     
     /**
@@ -59,7 +61,7 @@ class SortListTest extends ThreeDCartTestCase
         $orderByInterfaceMock = $this->getMockBuilder(OrderByInterface::class)
                                      ->setConstructorArgs([
                                          $field,
-                                         $sortOrder
+                                         $sortOrder,
                                      ])
                                      ->getMockForAbstractClass();
         $orderByInterfaceMock->method('getOrderByField')->willReturn($field);

@@ -12,53 +12,53 @@ use ThreeDCart\Api\Soap\Resource\VisitorInterface;
  */
 class Customer extends SoapResource
 {
-    const EDIT_CUSTOMER_CONTACTID     = 'contactid';
-    const EDIT_CUSTOMER_COMMENTS      = 'comments';
+    const EDIT_CUSTOMER_CONTACTID = 'contactid';
+    const EDIT_CUSTOMER_COMMENTS = 'comments';
     const EDIT_CUSTOMER_LASTLOGINDATE = 'lastlogindate';
-    const EDIT_CUSTOMER_WEBSITE       = 'website';
-    const EDIT_CUSTOMER_DISCOUNT      = 'discount';
-    const EDIT_CUSTOMER_ACCOUNTNO     = 'accountno';
-    const EDIT_CUSTOMER_MAILLIST      = 'maillist';
-    const EDIT_CUSTOMER_CUSTENABLED   = 'custenabled';
+    const EDIT_CUSTOMER_WEBSITE = 'website';
+    const EDIT_CUSTOMER_DISCOUNT = 'discount';
+    const EDIT_CUSTOMER_ACCOUNTNO = 'accountno';
+    const EDIT_CUSTOMER_MAILLIST = 'maillist';
+    const EDIT_CUSTOMER_CUSTENABLED = 'custenabled';
     const EDIT_CUSTOMER_ALT_CONTACTID = 'alt_contactid';
-    const EDIT_CUSTOMER_PASS          = 'pass';
+    const EDIT_CUSTOMER_PASS = 'pass';
     
     const EDIT_CUSTOMER_BILLING_FIRSTNAME = 'billing_firstname';
-    const EDIT_CUSTOMER_BILLING_LASTNAME  = 'billing_lastname';
-    const EDIT_CUSTOMER_BILLING_ADDRESS   = 'billing_address';
-    const EDIT_CUSTOMER_BILLING_ADDRESS2  = 'billing_address2';
-    const EDIT_CUSTOMER_BILLING_CITY      = 'billing_city';
-    const EDIT_CUSTOMER_BILLING_STATE     = 'billing_state';
-    const EDIT_CUSTOMER_BILLING_ZIP       = 'billing_zip';
-    const EDIT_CUSTOMER_BILLING_COUNTRY   = 'billing_country';
-    const EDIT_CUSTOMER_BILLING_COMPANY   = 'billing_company';
-    const EDIT_CUSTOMER_BILLING_PHONE     = 'billing_phone';
-    const EDIT_CUSTOMER_EMAIL             = 'email';
+    const EDIT_CUSTOMER_BILLING_LASTNAME = 'billing_lastname';
+    const EDIT_CUSTOMER_BILLING_ADDRESS = 'billing_address';
+    const EDIT_CUSTOMER_BILLING_ADDRESS2 = 'billing_address2';
+    const EDIT_CUSTOMER_BILLING_CITY = 'billing_city';
+    const EDIT_CUSTOMER_BILLING_STATE = 'billing_state';
+    const EDIT_CUSTOMER_BILLING_ZIP = 'billing_zip';
+    const EDIT_CUSTOMER_BILLING_COUNTRY = 'billing_country';
+    const EDIT_CUSTOMER_BILLING_COMPANY = 'billing_company';
+    const EDIT_CUSTOMER_BILLING_PHONE = 'billing_phone';
+    const EDIT_CUSTOMER_EMAIL = 'email';
     
     const EDIT_CUSTOMER_SHIPPING_FIRSTNAME = 'shipping_firstname';
-    const EDIT_CUSTOMER_SHIPPING_LASTNAME  = 'shipping_lastname';
-    const EDIT_CUSTOMER_SHIPPING_ADDRESS   = 'shipping_address';
-    const EDIT_CUSTOMER_SHIPPING_ADDRESS2  = 'shipping_address2';
-    const EDIT_CUSTOMER_SHIPPING_CITY      = 'shipping_city';
-    const EDIT_CUSTOMER_SHIPPING_STATE     = 'shipping_state';
-    const EDIT_CUSTOMER_SHIPPING_ZIP       = 'shipping_zip';
-    const EDIT_CUSTOMER_SHIPPING_COUNTRY   = 'shipping_country';
-    const EDIT_CUSTOMER_SHIPPING_COMPANY   = 'shipping_company';
-    const EDIT_CUSTOMER_SHIPPING_PHONE     = 'shipping_phone';
+    const EDIT_CUSTOMER_SHIPPING_LASTNAME = 'shipping_lastname';
+    const EDIT_CUSTOMER_SHIPPING_ADDRESS = 'shipping_address';
+    const EDIT_CUSTOMER_SHIPPING_ADDRESS2 = 'shipping_address2';
+    const EDIT_CUSTOMER_SHIPPING_CITY = 'shipping_city';
+    const EDIT_CUSTOMER_SHIPPING_STATE = 'shipping_state';
+    const EDIT_CUSTOMER_SHIPPING_ZIP = 'shipping_zip';
+    const EDIT_CUSTOMER_SHIPPING_COUNTRY = 'shipping_country';
+    const EDIT_CUSTOMER_SHIPPING_COMPANY = 'shipping_company';
+    const EDIT_CUSTOMER_SHIPPING_PHONE = 'shipping_phone';
     
-    public static $editCustomerMapping = array(
-        self::EDIT_CUSTOMER_CONTACTID     => 'CustomerID',
-        self::EDIT_CUSTOMER_COMMENTS      => 'Comments',
+    public static $editCustomerMapping = [
+        self::EDIT_CUSTOMER_CONTACTID => 'CustomerID',
+        self::EDIT_CUSTOMER_COMMENTS => 'Comments',
         self::EDIT_CUSTOMER_LASTLOGINDATE => 'LastLoginDate',
-        self::EDIT_CUSTOMER_WEBSITE       => 'WebSite',
-        self::EDIT_CUSTOMER_DISCOUNT      => 'DiscountGroup',
-        self::EDIT_CUSTOMER_ACCOUNTNO     => 'AccountNumber',
-        self::EDIT_CUSTOMER_MAILLIST      => 'MailList',
-        self::EDIT_CUSTOMER_CUSTENABLED   => 'CustEnabled',
+        self::EDIT_CUSTOMER_WEBSITE => 'WebSite',
+        self::EDIT_CUSTOMER_DISCOUNT => 'DiscountGroup',
+        self::EDIT_CUSTOMER_ACCOUNTNO => 'AccountNumber',
+        self::EDIT_CUSTOMER_MAILLIST => 'MailList',
+        self::EDIT_CUSTOMER_CUSTENABLED => 'CustEnabled',
         self::EDIT_CUSTOMER_ALT_CONTACTID => 'UserID',
-        self::EDIT_CUSTOMER_PASS          => 'Pass',
-        self::EDIT_CUSTOMER_ALT_CONTACTID => 'AltContactId'
-    );
+        self::EDIT_CUSTOMER_PASS => 'Pass',
+        self::EDIT_CUSTOMER_ALT_CONTACTID => 'AltContactId',
+    ];
     
     /*    alt_contaactId
         pass
@@ -288,7 +288,7 @@ class Customer extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isMailList()
     {
@@ -296,7 +296,7 @@ class Customer extends SoapResource
     }
     
     /**
-     * @param boolean $MailList
+     * @param bool $MailList
      */
     public function setMailList($MailList)
     {
@@ -304,7 +304,7 @@ class Customer extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isCustomerType()
     {
@@ -312,7 +312,7 @@ class Customer extends SoapResource
     }
     
     /**
-     * @param boolean $CustomerType
+     * @param bool $CustomerType
      */
     public function setCustomerType($CustomerType)
     {
@@ -336,7 +336,7 @@ class Customer extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isCustEnabled()
     {
@@ -344,7 +344,7 @@ class Customer extends SoapResource
     }
     
     /**
-     * @param boolean $CustEnabled
+     * @param bool $CustEnabled
      */
     public function setCustEnabled($CustEnabled)
     {
@@ -432,9 +432,9 @@ class Customer extends SoapResource
     {
         $alternativeData = $this->getAlternativeData();
         
-        $customerData = array();
+        $customerData = [];
         foreach ($fieldList as $property) {
-            if (!array_key_exists($property, $alternativeData)) {
+            if (! array_key_exists($property, $alternativeData)) {
                 throw new \InvalidArgumentException('$property: ' . $property . ' is no valid parameter');
             }
             
@@ -455,12 +455,13 @@ class Customer extends SoapResource
         
         $reverseEditCustomerMapping = array_flip(self::$editCustomerMapping);
         
-        $alternativeData = array();
+        $alternativeData = [];
         
         if ($this->BillingAddress) {
             $alternativeData = array_merge(
                 $alternativeData,
-                $this->BillingAddress->getAlternativeData(Address::TYPE_BILLING
+                $this->BillingAddress->getAlternativeData(
+                    Address::TYPE_BILLING
                 )
             );
         }
@@ -468,13 +469,14 @@ class Customer extends SoapResource
         if ($this->ShippingAddress) {
             $alternativeData = array_merge(
                 $alternativeData,
-                $this->ShippingAddress->getAlternativeData(Address::TYPE_SHIPPING
+                $this->ShippingAddress->getAlternativeData(
+                    Address::TYPE_SHIPPING
                 )
             );
         }
         
         foreach ($objectVars as $objectVarName => $objectVarValue) {
-            if (!isset($reverseEditCustomerMapping[$objectVarName])) {
+            if (! isset($reverseEditCustomerMapping[$objectVarName])) {
                 continue;
             }
             

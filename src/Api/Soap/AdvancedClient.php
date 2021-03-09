@@ -4,9 +4,9 @@ namespace ThreeDCart\Api\Soap;
 
 use ThreeDCart\Api\Soap\Request\AdvancedClientInterface;
 use ThreeDCart\Api\Soap\Request\MalFormedApiResponseException;
+use ThreeDCart\Api\Soap\Request\ResponseHandlerInterface;
 use ThreeDCart\Api\Soap\Request\ResponseInvalidException;
 use ThreeDCart\Api\Soap\Request\SqlFieldList;
-use ThreeDCart\Api\Soap\Request\ResponseHandlerInterface;
 use ThreeDCart\Primitive\ArrayValueObject;
 use ThreeDCart\Primitive\StringValueObject;
 
@@ -18,7 +18,7 @@ use ThreeDCart\Primitive\StringValueObject;
 class AdvancedClient
 {
     const THREEDCART_SOAP_API_URL = 'http://api.3dcart.com/cart_advanced.asmx';
-    const RUN_QUERY_RECORD        = 'runQueryRecord';
+    const RUN_QUERY_RECORD = 'runQueryRecord';
     
     /** @var AdvancedClientInterface */
     private $soapAdvancedClient;
@@ -34,7 +34,7 @@ class AdvancedClient
         ResponseHandlerInterface $responseHandler
     ) {
         $this->soapAdvancedClient = $advancedSoapClient;
-        $this->responseHandler    = $responseHandler;
+        $this->responseHandler = $responseHandler;
     }
     
     /**
@@ -81,7 +81,7 @@ class AdvancedClient
      */
     protected function extractSpecificXmlTagAsArray(StringValueObject $responseXmlTag, ArrayValueObject $responseData)
     {
-        if (!$responseData->issetKey($responseXmlTag)) {
+        if (! $responseData->issetKey($responseXmlTag)) {
             throw new MalFormedApiResponseException('xml tag ' . $responseXmlTag->getStringValue() . ' is missing');
         }
         

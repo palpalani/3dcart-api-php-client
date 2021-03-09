@@ -54,7 +54,7 @@ class AffiliateInformation extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isAffiliateApproved()
     {
@@ -62,7 +62,7 @@ class AffiliateInformation extends SoapResource
     }
     
     /**
-     * @param boolean $AffiliateApproved
+     * @param bool $AffiliateApproved
      */
     public function setAffiliateApproved($AffiliateApproved)
     {

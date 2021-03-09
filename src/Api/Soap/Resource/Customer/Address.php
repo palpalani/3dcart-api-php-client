@@ -12,34 +12,34 @@ use ThreeDCart\Api\Soap\Resource\VisitorInterface;
  */
 class Address extends SoapResource
 {
-    const TYPE_BILLING  = 'Billing';
+    const TYPE_BILLING = 'Billing';
     const TYPE_SHIPPING = 'Shipping';
     
-    public static $editCustomerMappingBilling  = array(
+    public static $editCustomerMappingBilling = [
         Customer::EDIT_CUSTOMER_BILLING_FIRSTNAME => 'FirstName',
-        Customer::EDIT_CUSTOMER_BILLING_LASTNAME  => 'LastName',
-        Customer::EDIT_CUSTOMER_BILLING_ADDRESS   => 'Address',
-        Customer::EDIT_CUSTOMER_BILLING_ADDRESS2  => 'Address2',
-        Customer::EDIT_CUSTOMER_BILLING_CITY      => 'City',
-        Customer::EDIT_CUSTOMER_BILLING_STATE     => 'StateCode',
-        Customer::EDIT_CUSTOMER_BILLING_ZIP       => 'ZipCode',
-        Customer::EDIT_CUSTOMER_BILLING_COUNTRY   => 'CountryCode',
-        Customer::EDIT_CUSTOMER_BILLING_COMPANY   => 'Company',
-        Customer::EDIT_CUSTOMER_BILLING_PHONE     => 'Phone',
-        Customer::EDIT_CUSTOMER_EMAIL             => 'Email',
-    );
-    public static $editCustomerMappingShipping = array(
+        Customer::EDIT_CUSTOMER_BILLING_LASTNAME => 'LastName',
+        Customer::EDIT_CUSTOMER_BILLING_ADDRESS => 'Address',
+        Customer::EDIT_CUSTOMER_BILLING_ADDRESS2 => 'Address2',
+        Customer::EDIT_CUSTOMER_BILLING_CITY => 'City',
+        Customer::EDIT_CUSTOMER_BILLING_STATE => 'StateCode',
+        Customer::EDIT_CUSTOMER_BILLING_ZIP => 'ZipCode',
+        Customer::EDIT_CUSTOMER_BILLING_COUNTRY => 'CountryCode',
+        Customer::EDIT_CUSTOMER_BILLING_COMPANY => 'Company',
+        Customer::EDIT_CUSTOMER_BILLING_PHONE => 'Phone',
+        Customer::EDIT_CUSTOMER_EMAIL => 'Email',
+    ];
+    public static $editCustomerMappingShipping = [
         Customer::EDIT_CUSTOMER_SHIPPING_FIRSTNAME => 'FirstName',
-        Customer::EDIT_CUSTOMER_SHIPPING_LASTNAME  => 'LastName',
-        Customer::EDIT_CUSTOMER_SHIPPING_ADDRESS   => 'Address',
-        Customer::EDIT_CUSTOMER_SHIPPING_ADDRESS2  => 'Address2',
-        Customer::EDIT_CUSTOMER_SHIPPING_CITY      => 'City',
-        Customer::EDIT_CUSTOMER_SHIPPING_STATE     => 'StateCode',
-        Customer::EDIT_CUSTOMER_SHIPPING_ZIP       => 'ZipCode',
-        Customer::EDIT_CUSTOMER_SHIPPING_COUNTRY   => 'CountryCode',
-        Customer::EDIT_CUSTOMER_SHIPPING_COMPANY   => 'Company',
-        Customer::EDIT_CUSTOMER_SHIPPING_PHONE     => 'Phone',
-    );
+        Customer::EDIT_CUSTOMER_SHIPPING_LASTNAME => 'LastName',
+        Customer::EDIT_CUSTOMER_SHIPPING_ADDRESS => 'Address',
+        Customer::EDIT_CUSTOMER_SHIPPING_ADDRESS2 => 'Address2',
+        Customer::EDIT_CUSTOMER_SHIPPING_CITY => 'City',
+        Customer::EDIT_CUSTOMER_SHIPPING_STATE => 'StateCode',
+        Customer::EDIT_CUSTOMER_SHIPPING_ZIP => 'ZipCode',
+        Customer::EDIT_CUSTOMER_SHIPPING_COUNTRY => 'CountryCode',
+        Customer::EDIT_CUSTOMER_SHIPPING_COMPANY => 'Company',
+        Customer::EDIT_CUSTOMER_SHIPPING_PHONE => 'Phone',
+    ];
     
     /** @var string */
     private $FirstName;
@@ -249,7 +249,7 @@ class Address extends SoapResource
      */
     public function getAlternativeData($addressType = self::TYPE_BILLING)
     {
-        if (!in_array($addressType, array(self::TYPE_BILLING, self::TYPE_SHIPPING))) {
+        if (! in_array($addressType, [self::TYPE_BILLING, self::TYPE_SHIPPING])) {
             throw new \InvalidArgumentException('$addressType is not valid');
         }
         
@@ -257,9 +257,9 @@ class Address extends SoapResource
         
         $reverseEditCustomerMapping = array_flip(self::${'editCustomerMapping' . $addressType});
         
-        $alternativeData = array();
+        $alternativeData = [];
         foreach ($objectVars as $objectVarName => $objectVarValue) {
-            if (!isset($reverseEditCustomerMapping[$objectVarName])) {
+            if (! isset($reverseEditCustomerMapping[$objectVarName])) {
                 continue;
             }
             

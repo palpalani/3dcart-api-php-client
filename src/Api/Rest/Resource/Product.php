@@ -24,22 +24,22 @@ use ThreeDCart\Api\Rest\Resource\Product\UpSellingItem;
 class Product extends AbstractResource
 {
     protected static $lists = [
-        'DistributorList'    => Distributor::class,
-        'CategoryList'       => Category::class,
-        'ExternalIdsList'    => ExternalId::class,
-        'FeatureList'        => Feature::class,
-        'ImageGalleryList'   => ImageGallery::class,
-        'OptionSetList'      => OptionSet::class,
+        'DistributorList' => Distributor::class,
+        'CategoryList' => Category::class,
+        'ExternalIdsList' => ExternalId::class,
+        'FeatureList' => Feature::class,
+        'ImageGalleryList' => ImageGallery::class,
+        'OptionSetList' => OptionSet::class,
         'AdvancedOptionList' => AdvancedOption::class,
         'RelatedProductList' => RelatedProduct::class,
-        'UpSellingItemList'  => UpSellingItem::class,
-        'DiscountList'       => Discount::class,
-        'SerialList'         => Serial::class,
-        'EProductList'       => EProduct::class
+        'UpSellingItemList' => UpSellingItem::class,
+        'DiscountList' => Discount::class,
+        'SerialList' => Serial::class,
+        'EProductList' => EProduct::class,
     ];
     
     protected static $objects = [
-        'SKUInfo' => ProductSKU::class
+        'SKUInfo' => ProductSKU::class,
     ];
     
     /** @var string */

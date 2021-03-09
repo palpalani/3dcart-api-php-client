@@ -3,8 +3,8 @@
 namespace ThreeDCart\Api\Soap\Resource;
 
 use ThreeDCart\Api\Soap\Resource\Customer\AdditionalFields;
-use ThreeDCart\Api\Soap\Resource\Customer\Customer;
 use ThreeDCart\Api\Soap\Resource\Customer\Address;
+use ThreeDCart\Api\Soap\Resource\Customer\Customer;
 use ThreeDCart\Api\Soap\Resource\Customer\LoginToken;
 use ThreeDCart\Api\Soap\Resource\Order\AffiliateInformation;
 use ThreeDCart\Api\Soap\Resource\Order\CheckoutQuestion;
@@ -59,10 +59,10 @@ class ResourceParserVisitor implements VisitorInterface
     private function assignSimpleProperties(SoapResource $resource, array $data)
     {
         foreach ($data as $key => $value) {
-            if (method_exists($resource, 'get' . $key) && call_user_func(array($resource, 'get' . $key)) !== null) {
+            if (method_exists($resource, 'get' . $key) && call_user_func([$resource, 'get' . $key]) !== null) {
                 continue;
             }
-            if (!method_exists($resource, 'set' . $key)) {
+            if (! method_exists($resource, 'set' . $key)) {
                 throw new ParseException('unable to create resource. setter set' . $key . '() don\'t exist');
             }
             $resource->{'set' . $key}($value);
@@ -78,18 +78,18 @@ class ResourceParserVisitor implements VisitorInterface
      */
     private function reduceHierarchy(array $data, $objectIndex, $objectIndexChild = null)
     {
-        if (!isset($data[$objectIndex])
-            || !is_array($data[$objectIndex])
+        if (! isset($data[$objectIndex])
+            || ! is_array($data[$objectIndex])
         ) {
-            return array();
+            return [];
         }
         $data = $data[$objectIndex];
         
         if ($objectIndexChild !== null) {
-            if (!isset($data[$objectIndexChild])
-                || !is_array($data[$objectIndexChild])
+            if (! isset($data[$objectIndexChild])
+                || ! is_array($data[$objectIndexChild])
             ) {
-                return array();
+                return [];
             }
             $data = $data[$objectIndexChild];
         }
@@ -109,16 +109,16 @@ class ResourceParserVisitor implements VisitorInterface
      */
     private function createObjects($className, array $data, $objectIndex, $objectIndexChild = null)
     {
-        if (!$data = $this->reduceHierarchy($data, $objectIndex, $objectIndexChild)) {
+        if (! $data = $this->reduceHierarchy($data, $objectIndex, $objectIndexChild)) {
             return $data;
         }
         
-        if (!isset($data[0]) && !empty($data)) {
+        if (! isset($data[0]) && ! empty($data)) {
             // We need a special logic in case the API returns jut one element instead of an array
-            return array($this->createObject($className, $data));
+            return [$this->createObject($className, $data)];
         }
         
-        $objects = array();
+        $objects = [];
         foreach ($data as $objectData) {
             if ($object = $this->createObject($className, $objectData)) {
                 $objects[] = $object;
@@ -141,7 +141,7 @@ class ResourceParserVisitor implements VisitorInterface
         $resource = new $className();
         
         if ($objectIndex !== null) {
-            if (!isset($objectData[$objectIndex])) {
+            if (! isset($objectData[$objectIndex])) {
                 return $resource;
             }
             $objectData = $objectData[$objectIndex];
@@ -332,13 +332,21 @@ class ResourceParserVisitor implements VisitorInterface
         
         
         /** @var GiftCertificatePurchased[] $giftCertificatePurchased */
-        $giftCertificatePurchased = $this->createObjects(GiftCertificatePurchased::class, $this->data,
-            'GiftCertificatePurchased', 'Gift');
+        $giftCertificatePurchased = $this->createObjects(
+            GiftCertificatePurchased::class,
+            $this->data,
+            'GiftCertificatePurchased',
+            'Gift'
+        );
         $order->setGiftCertificatePurchased(isset($giftCertificatePurchased[0]) ? $giftCertificatePurchased[0] : null);
         
         /** @var GiftCertificateUsed[] $giftCertificateUsed */
-        $giftCertificateUsed = $this->createObjects(GiftCertificateUsed::class, $this->data,
-            'GiftCertificateUsed', 'Gift');
+        $giftCertificateUsed = $this->createObjects(
+            GiftCertificateUsed::class,
+            $this->data,
+            'GiftCertificateUsed',
+            'Gift'
+        );
         $order->setGiftCertificateUsed(isset($giftCertificateUsed[0]) ? $giftCertificateUsed[0] : null);
         
         $this->assignSimpleProperties($order, $this->data);

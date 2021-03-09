@@ -41,7 +41,7 @@ class GuzzleTest extends ThreeDCartTestCase
         );
         $this->authenticationMock = $this->getMockBuilder(AuthenticationServiceInterface::class)
                                          ->getMockForAbstractClass();
-        $this->authenticationMock->method('getHttpHeaders')->willReturn(new HttpHeader(array()));
+        $this->authenticationMock->method('getHttpHeaders')->willReturn(new HttpHeader([]));
         
         $this->subjectUnderTest = new Guzzle(
             $this->clientInterfaceMock,
@@ -88,108 +88,108 @@ class GuzzleTest extends ThreeDCartTestCase
         );
         
         return [
-            'default'                             => [
-                array(
+            'default' => [
+                [
                     'GET',
                     '',
                     [
-                        'headers' => array(),
-                        'verify'  => false
-                    ]
-                ),
+                        'headers' => [],
+                        'verify' => false,
+                    ],
+                ],
                 new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                 new ApiPathAppendix(''),
                 new HttpParameterList(),
-                new HttpParameterList()
+                new HttpParameterList(),
             ],
-            'default with appendix path'          => [
-                array(
+            'default with appendix path' => [
+                [
                     'GET',
                     'test',
                     [
-                        'headers' => array(),
-                        'verify'  => false
-                    ]
-                ),
+                        'headers' => [],
+                        'verify' => false,
+                    ],
+                ],
                 new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                 new ApiPathAppendix('test'),
                 new HttpParameterList(),
-                new HttpParameterList()
+                new HttpParameterList(),
             ],
-            'get parameter'                       => [
-                array(
+            'get parameter' => [
+                [
                     'GET',
                     '?testKey=testValue',
                     [
-                        'headers' => array(),
-                        'verify'  => false
-                    ]
-                ),
+                        'headers' => [],
+                        'verify' => false,
+                    ],
+                ],
                 new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                 new ApiPathAppendix(''),
                 $httpParameterList,
-                new HttpParameterList()
+                new HttpParameterList(),
             ],
-            'get parameter and appendix'          => [
-                array(
+            'get parameter and appendix' => [
+                [
                     'GET',
                     'test?testKey=testValue',
                     [
-                        'headers' => array(),
-                        'verify'  => false
-                    ]
-                ),
+                        'headers' => [],
+                        'verify' => false,
+                    ],
+                ],
                 new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                 new ApiPathAppendix('test'),
                 $httpParameterList,
-                new HttpParameterList()
+                new HttpParameterList(),
             ],
-            'post parameter'                      => [
-                array(
+            'post parameter' => [
+                [
                     'GET',
                     '',
                     [
-                        'headers'     => array(),
-                        'verify'      => false,
-                        'form_params' => array(
-                            'testKey' => 'testValue'
-                        )
-                    ]
-                ),
+                        'headers' => [],
+                        'verify' => false,
+                        'form_params' => [
+                            'testKey' => 'testValue',
+                        ],
+                    ],
+                ],
                 new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                 new ApiPathAppendix(''),
                 new HttpParameterList(),
                 $httpParameterList,
             ],
-            'post and get parameter'              => [
-                array(
+            'post and get parameter' => [
+                [
                     'GET',
                     '?testKey=testValue',
                     [
-                        'headers'     => array(),
-                        'verify'      => false,
-                        'form_params' => array(
-                            'testKey' => 'testValue'
-                        )
-                    ]
-                ),
+                        'headers' => [],
+                        'verify' => false,
+                        'form_params' => [
+                            'testKey' => 'testValue',
+                        ],
+                    ],
+                ],
                 new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                 new ApiPathAppendix(''),
                 $httpParameterList,
                 $httpParameterList,
             ],
             'post and get parameter and appendix' => [
-                array(
+                [
                     'GET',
                     'test?testKey=testValue',
                     [
-                        'headers'     => array(),
-                        'verify'      => false,
-                        'form_params' => array(
-                            'testKey' => 'testValue'
-                        )
-                    ]
-                ),
+                        'headers' => [],
+                        'verify' => false,
+                        'form_params' => [
+                            'testKey' => 'testValue',
+                        ],
+                    ],
+                ],
                 new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                 new ApiPathAppendix('test'),
                 $httpParameterList,
@@ -216,7 +216,8 @@ class GuzzleTest extends ThreeDCartTestCase
             new HttpMethod(HttpMethod::HTTP_METHOD_GET),
             new ApiPathAppendix(''),
             new HttpParameterList(),
-            new HttpParameterList());
+            new HttpParameterList()
+        );
     }
     
     public function testSendClientException()
@@ -237,7 +238,8 @@ class GuzzleTest extends ThreeDCartTestCase
             new HttpMethod(HttpMethod::HTTP_METHOD_GET),
             new ApiPathAppendix(''),
             new HttpParameterList(),
-            new HttpParameterList());
+            new HttpParameterList()
+        );
     }
     
     public function testSendServerException()
@@ -258,6 +260,7 @@ class GuzzleTest extends ThreeDCartTestCase
             new HttpMethod(HttpMethod::HTTP_METHOD_GET),
             new ApiPathAppendix(''),
             new HttpParameterList(),
-            new HttpParameterList());
+            new HttpParameterList()
+        );
     }
 }

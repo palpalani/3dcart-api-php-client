@@ -6,7 +6,7 @@ use ThreeDCart\Primitive\StringValueObject;
 
 class HttpParameter
 {
-    /** @var  StringValueObject */
+    /** @var StringValueObject */
     private $key;
     
     /** @var StringValueObject */
@@ -18,7 +18,7 @@ class HttpParameter
      */
     public function __construct(StringValueObject $key, StringValueObject $value)
     {
-        $this->key   = $key;
+        $this->key = $key;
         $this->value = $value;
     }
     

@@ -19,7 +19,7 @@ class BooleanValueObject
      */
     public function __construct($value)
     {
-        if (!is_bool($value)) {
+        if (! is_bool($value)) {
             throw new \InvalidArgumentException(
                 'parameter $value is not of type bool. type is ' . gettype($value)
             );

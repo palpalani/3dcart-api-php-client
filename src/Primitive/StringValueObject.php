@@ -29,7 +29,7 @@ class StringValueObject
      */
     protected function validate($value)
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             throw new \InvalidArgumentException(
                 'parameter $value is not of type string. type is ' . gettype($value)
             );

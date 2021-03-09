@@ -92,7 +92,7 @@ class EProduct extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isEProductSerial()
     {
@@ -100,7 +100,7 @@ class EProduct extends SoapResource
     }
     
     /**
-     * @param boolean $eProductSerial
+     * @param bool $eProductSerial
      */
     public function setEProductSerial($eProductSerial)
     {
@@ -124,7 +124,7 @@ class EProduct extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isEProductReuseSerial()
     {
@@ -132,7 +132,7 @@ class EProduct extends SoapResource
     }
     
     /**
-     * @param boolean $eProductReuseSerial
+     * @param bool $eProductReuseSerial
      */
     public function setEProductReuseSerial($eProductReuseSerial)
     {

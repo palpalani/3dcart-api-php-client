@@ -30,7 +30,7 @@ class ResourceParser implements ResourceParserInterface
         
         /** @var SoapResource $resource */
         $resource = new $class();
-        $visitor  = new ResourceParserVisitor($objectData);
+        $visitor = new ResourceParserVisitor($objectData);
         $resource->accept($visitor);
         
         return $resource;
@@ -50,7 +50,7 @@ class ResourceParser implements ResourceParserInterface
             throw new ParseException('unable to create resource. data empty');
         }
         
-        $resources = array();
+        $resources = [];
         foreach ($resourcesData->getValue() as $resourceData) {
             if (empty($resourceData)) {
                 throw new ParseException('unable to create resource. data empty');

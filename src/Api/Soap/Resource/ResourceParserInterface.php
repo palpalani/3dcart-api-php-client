@@ -12,7 +12,6 @@ use ThreeDCart\Primitive\StringValueObject;
  */
 interface ResourceParserInterface
 {
-    
     /**
      * @param StringValueObject $className
      * @param ArrayValueObject  $resourceObjectData

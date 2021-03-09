@@ -262,7 +262,7 @@ class Item extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isTaxable()
     {
@@ -270,7 +270,7 @@ class Item extends SoapResource
     }
     
     /**
-     * @param boolean $Taxable
+     * @param bool $Taxable
      */
     public function setTaxable($Taxable)
     {

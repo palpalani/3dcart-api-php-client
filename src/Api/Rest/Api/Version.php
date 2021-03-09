@@ -9,7 +9,7 @@ class Version extends Enum
 {
     const VERSION_1 = 'v1';
     
-    public static $allowedValues = array(self::VERSION_1);
+    public static $allowedValues = [self::VERSION_1];
     
     /**
      * @return StringValueObject

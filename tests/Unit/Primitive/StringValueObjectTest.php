@@ -29,26 +29,26 @@ class StringValueObjectTest extends ThreeDCartTestCase
     public function provideNegativeCases()
     {
         return [
-            'object'     => [
-                new \stdClass()
+            'object' => [
+                new \stdClass(),
             ],
-            'double'     => [
-                3.4
+            'double' => [
+                3.4,
             ],
             'boolean #0' => [
-                false
+                false,
             ],
             'boolean #1' => [
-                true
+                true,
             ],
-            'array'      => [
-                array()
+            'array' => [
+                [],
             ],
-            'null'       => [
-                null
+            'null' => [
+                null,
             ],
-            'int'        => [
-                5
+            'int' => [
+                5,
             ],
         ];
     }
@@ -72,17 +72,17 @@ class StringValueObjectTest extends ThreeDCartTestCase
     public function providePositiveCases()
     {
         return [
-            'string #valid'     => [
+            'string #valid' => [
                 'valid argument',
-                'valid argument'
+                'valid argument',
             ],
             'string #number #1' => [
                 '5',
-                '5'
+                '5',
             ],
             'empty string' => [
                 '',
-                ''
+                '',
             ],
         ];
     }

@@ -29,29 +29,29 @@ class IntegerValueObjectTest extends ThreeDCartTestCase
     public function provideNegativeCases()
     {
         return [
-            'object'           => [
-                new \stdClass()
+            'object' => [
+                new \stdClass(),
             ],
-            'string #invalid'  => [
-                'invalid argument'
+            'string #invalid' => [
+                'invalid argument',
             ],
             'non valid double' => [
-                3.4
+                3.4,
             ],
-            'boolean #0'       => [
-                false
+            'boolean #0' => [
+                false,
             ],
-            'boolean #1'       => [
-                true
+            'boolean #1' => [
+                true,
             ],
-            'array'            => [
-                array()
+            'array' => [
+                [],
             ],
-            'null'             => [
-                null
+            'null' => [
+                null,
             ],
             'empty string' => [
-                ''
+                '',
             ],
         ];
     }
@@ -75,25 +75,25 @@ class IntegerValueObjectTest extends ThreeDCartTestCase
     public function providePositiveCases()
     {
         return [
-            'int'               => [
+            'int' => [
                 5,
-                5
+                5,
             ],
-            'double'            => [
+            'double' => [
                 3,
-                3.0
+                3.0,
             ],
             'string #number #1' => [
                 5,
-                '5'
+                '5',
             ],
             'string #number #2' => [
                 0,
-                '0'
+                '0',
             ],
             'string #number #3' => [
                 3,
-                '3.0'
+                '3.0',
             ],
         ];
     }

@@ -29,8 +29,8 @@ class SecureUrlTest extends ThreeDCartTestCase
     {
         return [
             'empty string' => [
-                ''
-            ]
+                '',
+            ],
         ];
     }
 }

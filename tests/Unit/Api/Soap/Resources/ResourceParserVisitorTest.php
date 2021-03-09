@@ -43,7 +43,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
 {
     public function testVisitorCustomer()
     {
-        $customer              = new Customer();
+        $customer = new Customer();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('Customer', 'Customer.json');
         $resourceParserVisitor->visitCustomer($customer);
         
@@ -67,17 +67,19 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorCustomerLoginToken()
     {
-        $loginToken            = new LoginToken();
+        $loginToken = new LoginToken();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('CustomerLoginToken', 'LoginToken.json');
         $resourceParserVisitor->visitCustomerLoginToken($loginToken);
         
-        $this->assertEquals('fhWZ2A1EX49XV9Z7dwqUbZsMn/uDrQeEgKZ4ubaHMdwcp2IyRISw789d0beK7+f3',
-            $loginToken->getToken());
+        $this->assertEquals(
+            'fhWZ2A1EX49XV9Z7dwqUbZsMn/uDrQeEgKZ4ubaHMdwcp2IyRISw789d0beK7+f3',
+            $loginToken->getToken()
+        );
     }
     
     public function testVisitorAddress()
     {
-        $address               = new Address();
+        $address = new Address();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('CustomerAddress', 'Address.json');
         $resourceParserVisitor->visitCustomerAddress($address);
         
@@ -96,7 +98,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorAdditionalFields()
     {
-        $additionalFields      = new AdditionalFields();
+        $additionalFields = new AdditionalFields();
         $resourceParserVisitor =
             $this->instantiateResourceParserVisitor('CustomerAdditionalFields', 'AdditionalFields.json');
         $resourceParserVisitor->visitCustomerAdditionalFields($additionalFields);
@@ -108,7 +110,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProduct()
     {
-        $product               = new Product();
+        $product = new Product();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('Product', 'Product.json');
         $resourceParserVisitor->visitProduct($product);
         
@@ -162,13 +164,17 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
         $this->assertEquals('0', $product->getMaximumOrder());
         $this->assertEquals('6/22/2009', $product->getDateCreated());
         $this->assertEquals('Sample Product', $product->getDescription());
-        $this->assertEquals('<div><strong><span style="COLOR: #ff0000">SAMPLE PRODUCT </span></strong></div><div>&nbsp;</div><div>Our adjustable, 100% brushed cotton Cap is unstructured and an ideal way to beat the heat.</div>    ',
-            $product->getExtendedDescription());
+        $this->assertEquals(
+            '<div><strong><span style="COLOR: #ff0000">SAMPLE PRODUCT </span></strong></div><div>&nbsp;</div><div>Our adjustable, 100% brushed cotton Cap is unstructured and an ideal way to beat the heat.</div>    ',
+            $product->getExtendedDescription()
+        );
         $this->assertEquals('My;Key;words', $product->getKeywords());
         $this->assertEquals('0.00', $product->getShipCost());
         $this->assertEquals('Title Of MetaTags', $product->getTitle());
-        $this->assertEquals('<META NAME="DESCRIPTION" CONTENT="gffghnhg"><META NAME="ABSTRACT" CONTENT="mbjmhj"><META NAME="KEYWORDS" CONTENT="bmvghjhjm">',
-            $product->getMetaTags());
+        $this->assertEquals(
+            '<META NAME="DESCRIPTION" CONTENT="gffghnhg"><META NAME="ABSTRACT" CONTENT="mbjmhj"><META NAME="KEYWORDS" CONTENT="bmvghjhjm">',
+            $product->getMetaTags()
+        );
         $this->assertEquals('DIsplayTesxt', $product->getDisplayText());
         $this->assertEquals('1', $product->isHomeSpecial());
         $this->assertEquals('0', $product->isCategorySpecial());
@@ -206,7 +212,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductCategory()
     {
-        $category              = new Category();
+        $category = new Category();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductCategory', 'Category.json');
         $resourceParserVisitor->visitProductCategory($category);
         
@@ -216,7 +222,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductEProduct()
     {
-        $eProduct              = new EProduct();
+        $eProduct = new EProduct();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductEProduct', 'EProduct.json');
         $resourceParserVisitor->visitProductEProduct($eProduct);
         
@@ -231,7 +237,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductExtraFields()
     {
-        $extraFields           = new ExtraFields();
+        $extraFields = new ExtraFields();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductExtraField', 'ExtraField.json');
         $resourceParserVisitor->visitProductExtraFields($extraFields);
         
@@ -252,7 +258,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductImage()
     {
-        $image                 = new Image();
+        $image = new Image();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductImage', 'Image.json');
         $resourceParserVisitor->visitProductImage($image);
         
@@ -262,7 +268,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductImages()
     {
-        $images                = new Images();
+        $images = new Images();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductImages', 'Images.json');
         $resourceParserVisitor->visitProductImages($images);
         
@@ -277,7 +283,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductOption()
     {
-        $option                = new Option();
+        $option = new Option();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductOption', 'Option.json');
         $resourceParserVisitor->visitProductOption($option);
         
@@ -293,7 +299,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductOptionValue()
     {
-        $optionValue           = new OptionValue();
+        $optionValue = new OptionValue();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductOptionValue', 'OptionValue.json');
         $resourceParserVisitor->visitProductOptionValue($optionValue);
         
@@ -305,7 +311,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductPriceLevel()
     {
-        $priceLevel            = new PriceLevel();
+        $priceLevel = new PriceLevel();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductPriceLevel', 'PriceLevel.json');
         $resourceParserVisitor->visitProductPriceLevel($priceLevel);
         
@@ -323,7 +329,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductRelatedProduct()
     {
-        $relatedProduct        = new RelatedProduct();
+        $relatedProduct = new RelatedProduct();
         $resourceParserVisitor =
             $this->instantiateResourceParserVisitor('ProductRelatedProduct', 'RelatedProduct.json');
         $resourceParserVisitor->visitProductRelatedProduct($relatedProduct);
@@ -334,7 +340,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductReward()
     {
-        $reward                = new Reward();
+        $reward = new Reward();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductReward', 'Reward.json');
         $resourceParserVisitor->visitProductReward($reward);
         
@@ -345,7 +351,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductInventory()
     {
-        $productInventory      = new ProductInventory();
+        $productInventory = new ProductInventory();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('ProductInventory', 'Inventory.json');
         $resourceParserVisitor->visitProductInventory($productInventory);
         
@@ -355,7 +361,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderAffiliateInformation()
     {
-        $affiliateInformation  = new AffiliateInformation();
+        $affiliateInformation = new AffiliateInformation();
         $resourceParserVisitor =
             $this->instantiateResourceParserVisitor('OrderAffiliateInformation', 'AffiliateInformation.json');
         $resourceParserVisitor->visitOrderAffiliateInformation($affiliateInformation);
@@ -368,7 +374,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderComments()
     {
-        $comments              = new Comments();
+        $comments = new Comments();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('OrderComments', 'Comments.json');
         $resourceParserVisitor->visitOrderComments($comments);
         
@@ -380,7 +386,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     public function testVisitorOrderGiftCertificatePurchased()
     {
         $giftCertificatePurchased = new GiftCertificatePurchased();
-        $resourceParserVisitor    =
+        $resourceParserVisitor =
             $this->instantiateResourceParserVisitor('OrderGiftCertificatePurchased', 'GiftCertificatePurchased.json');
         $resourceParserVisitor->visitOrderGiftCertificatePurchased($giftCertificatePurchased);
         
@@ -394,7 +400,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderGiftCertificateUsed()
     {
-        $giftCertificateUsed   = new GiftCertificateUsed();
+        $giftCertificateUsed = new GiftCertificateUsed();
         $resourceParserVisitor =
             $this->instantiateResourceParserVisitor('OrderGiftCertificateUsed', 'GiftCertificateUsed.json');
         $resourceParserVisitor->visitOrderGiftCertificateUsed($giftCertificateUsed);
@@ -405,7 +411,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderItem()
     {
-        $item                  = new Item();
+        $item = new Item();
         $resourceParserVisitor =
             $this->instantiateResourceParserVisitor('OrderItem', 'Item.json');
         $resourceParserVisitor->visitOrderItem($item);
@@ -434,7 +440,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrder()
     {
-        $order                 = new Order();
+        $order = new Order();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('Order', 'Order.json');
         $resourceParserVisitor->visitOrder($order);
         
@@ -481,7 +487,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderPromotion()
     {
-        $promotion             = new Promotion();
+        $promotion = new Promotion();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('OrderPromotion', 'Promotion.json');
         $resourceParserVisitor->visitOrderPromotion($promotion);
         
@@ -491,7 +497,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderShipment()
     {
-        $shipment              = new Shipment();
+        $shipment = new Shipment();
         $resourceParserVisitor =
             $this->instantiateResourceParserVisitor('OrderShipment', 'Shipment.json');
         $resourceParserVisitor->visitOrderShipment($shipment);
@@ -518,7 +524,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderShippingInformation()
     {
-        $shippingInformation   = new ShippingInformation();
+        $shippingInformation = new ShippingInformation();
         $resourceParserVisitor =
             $this->instantiateResourceParserVisitor('OrderShippingInformation', 'ShippingInformation.json');
         $resourceParserVisitor->visitOrderShippingInformation($shippingInformation);
@@ -533,7 +539,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderStatus()
     {
-        $orderStatus           = new Status();
+        $orderStatus = new Status();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('OrderStatus', 'OrderStatus.json');
         $resourceParserVisitor->visitOrderStatus($orderStatus);
         
@@ -544,7 +550,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderTransaction()
     {
-        $transaction           = new Transaction();
+        $transaction = new Transaction();
         $resourceParserVisitor = $this->instantiateResourceParserVisitor('OrderTransaction', 'Transaction.json');
         $resourceParserVisitor->visitOrderTransaction($transaction);
         
@@ -559,7 +565,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorOrderCheckoutQuestion()
     {
-        $checkoutQuestion      = new CheckoutQuestion();
+        $checkoutQuestion = new CheckoutQuestion();
         $resourceParserVisitor =
             $this->instantiateResourceParserVisitor('OrderCheckoutQuestion', 'CheckoutQuestion.json');
         $resourceParserVisitor->visitOrderCheckoutQuestion($checkoutQuestion);
@@ -571,7 +577,7 @@ class ResourceParserVisitorTest extends ThreeDCartTestCase
     
     public function testVisitorProductOptionInvalidData()
     {
-        $option                = new Option();
+        $option = new Option();
         $resourceParserVisitor = new ResourceParserVisitor(new ArrayValueObject(['Values' => ['Wrong index' => []]]));
         $resourceParserVisitor->visitProductOption($option);
         

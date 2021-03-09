@@ -36,7 +36,7 @@ class Reward extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isRewardDisable()
     {
@@ -44,7 +44,7 @@ class Reward extends SoapResource
     }
     
     /**
-     * @param boolean $RewardDisable
+     * @param bool $RewardDisable
      */
     public function setRewardDisable($RewardDisable)
     {

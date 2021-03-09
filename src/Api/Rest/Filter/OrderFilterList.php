@@ -13,15 +13,15 @@ use ThreeDCart\Primitive\UnsignedIntegerValueObject;
  */
 class OrderFilterList extends AbstractFilterList implements OrderFilterListInterface
 {
-    const FILTER_INVOICENUMBER   = "invoicenumber";
-    const FILTER_ORDERSTATUS     = "orderstatus";
-    const FILTER_DATESTART       = "datestart";
-    const FILTER_DATEEND         = "dateend";
-    const FILTER_LIMIT           = "limit";
-    const FILTER_OFFSET          = "offset";
-    const FILTER_COUNTONLY       = "countonly";
+    const FILTER_INVOICENUMBER = "invoicenumber";
+    const FILTER_ORDERSTATUS = "orderstatus";
+    const FILTER_DATESTART = "datestart";
+    const FILTER_DATEEND = "dateend";
+    const FILTER_LIMIT = "limit";
+    const FILTER_OFFSET = "offset";
+    const FILTER_COUNTONLY = "countonly";
     const FILTER_LASTUPDATESTART = "lastupdatestart";
-    const FILTER_LASTUPDATEEND   = "lastupdateend";
+    const FILTER_LASTUPDATEEND = "lastupdateend";
     
     public static $allowedValues = [
         self::FILTER_INVOICENUMBER,

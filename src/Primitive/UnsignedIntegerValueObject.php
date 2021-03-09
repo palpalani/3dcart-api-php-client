@@ -19,7 +19,7 @@ class UnsignedIntegerValueObject extends IntegerValueObject
     {
         parent::__construct($value);
         
-        if (!$allowZero && $this->getIntValue() === 0) {
+        if (! $allowZero && $this->getIntValue() === 0) {
             throw new \InvalidArgumentException(
                 'Zero as value is not allowed'
             );

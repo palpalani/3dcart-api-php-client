@@ -9,17 +9,17 @@ namespace ThreeDCart\Api\Soap\Request;
  */
 class ApiErrorException extends ResponseInvalidException
 {
-    const ERROR_CODES = array(
-        0  => 'XML FILE BAD FORMED',
-        1  => 'UserIp Node Not Found / UserKey Node Not Found',
-        2  => 'UserKey Node Not Found / UserIp Node Not Found',
-        3  => 'ProductID Node Not Found',
-        4  => 'Quantity Node Not Found',
-        5  => 'BatchSize Node Not Found',
-        6  => 'StartNum Node Not Found',
-        7  => 'InvoiceNum Node Not Found',
-        8  => 'NewStatus  Node Not Found',
-        9  => 'Invalid Method',
+    const ERROR_CODES = [
+        0 => 'XML FILE BAD FORMED',
+        1 => 'UserIp Node Not Found / UserKey Node Not Found',
+        2 => 'UserKey Node Not Found / UserIp Node Not Found',
+        3 => 'ProductID Node Not Found',
+        4 => 'Quantity Node Not Found',
+        5 => 'BatchSize Node Not Found',
+        6 => 'StartNum Node Not Found',
+        7 => 'InvoiceNum Node Not Found',
+        8 => 'NewStatus  Node Not Found',
+        9 => 'Invalid Method',
         16 => 'Bad IP',
         17 => 'Bad Key',
         18 => 'API Settings Not Enabled',
@@ -39,8 +39,8 @@ class ApiErrorException extends ResponseInvalidException
         46 => 'Product Not Found',
         47 => 'Customer Not Found',
         48 => 'Order Status Not Found',
-        49 => 'Order Not Found'
-    );
+        49 => 'Order Not Found',
+    ];
     
     /**
      * @param string $message

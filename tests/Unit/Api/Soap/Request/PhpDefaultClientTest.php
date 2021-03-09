@@ -29,13 +29,13 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
     {
         $this->subjectUnderTest = $this->getMockBuilder(PhpDefaultClient::class)
                                        ->setMethods(null)
-                                       ->setConstructorArgs(array(
+                                       ->setConstructorArgs([
                                            $this->getMockFromWsdl($this->getRootPath() . 'soap-api'
                                                . DIRECTORY_SEPARATOR . 'wsdl' . DIRECTORY_SEPARATOR . 'api.wsdl'),
                                            new ResponseHandler(new SimpleXmlExceptionRenderer()),
                                            new StringValueObject(''),
                                            new StringValueObject(''),
-                                       ))
+                                       ])
                                        ->getMock()
         ;
     }
@@ -52,7 +52,7 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
         $this->subjectUnderTest->setSoapClient($this->getSoapClientEmptyResponse($soapMethodName));
         
         $this->expectException(ResponseBodyEmptyException::class);
-        call_user_func_array(array($this->subjectUnderTest, $method), $parameters);
+        call_user_func_array([$this->subjectUnderTest, $method], $parameters);
     }
     
     /**
@@ -66,78 +66,78 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
             [
                 'getProduct',
                 'getProduct',
-                array(
+                [
                     new BatchSize(100),
                     new StartNum(1),
                     $emptyStringValueObject,
-                    new CallBackUrl('')
-                )
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'getCustomers',
                 'getCustomer',
-                array(
+                [
                     new BatchSize(100),
                     new StartNum(1),
                     $emptyStringValueObject,
-                    new CallBackUrl('')
-                )
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'getOrderStatus',
                 'getOrderStatus',
-                array(
+                [
                     new StringValueObject('123'),
-                    new CallBackUrl('')
-                )
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'getProductCount',
                 'getProductCount',
-                array(
-                    new CallBackUrl('')
-                )
+                [
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'getProductInventory',
                 'getProductInventory',
-                array(
+                [
                     new StringValueObject('123'),
-                    new CallBackUrl('')
-                )
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'getCustomerLoginToken',
                 'getCustomerLoginToken',
-                array(
+                [
                     new StringValueObject('test@test.com'),
                     new IntegerValueObject(86400),
-                    new CallBackUrl('')
-                )
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'getCustomerCount',
                 'getCustomerCount',
-                array(
-                    new CallBackUrl('')
-                )
+                [
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'getOrderCount',
                 'getOrderCount',
-                array(
+                [
                     new BooleanValueObject(true),
                     $emptyStringValueObject,
                     $emptyStringValueObject,
                     null,
                     null,
-                    null
-                )
+                    null,
+                ],
             ],
             [
                 'getOrders',
                 'getOrder',
-                array(
+                [
                     new BatchSize(100),
                     new StartNum(100),
                     new BooleanValueObject(true),
@@ -145,47 +145,47 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
                     $emptyStringValueObject,
                     null,
                     null,
-                    null
-                )
+                    null,
+                ],
             ],
             [
                 'updateProductInventory',
                 'updateProductInventory',
-                array(
+                [
                     new StringValueObject('1234'),
                     new IntegerValueObject(3),
                     new BooleanValueObject(true),
-                    new CallBackUrl('')
-                )
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'updateOrderStatus',
                 'updateOrderStatus',
-                array(
+                [
                     new StringValueObject('123'),
                     new StringValueObject('new status'),
-                    new CallBackUrl('')
-                )
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'updateOrderShipment',
                 'updateOrderShipment',
-                array(
+                [
                     new StringValueObject('1234'),
                     new StringValueObject('shipmentid'),
                     new StringValueObject('tracking'),
                     new \DateTime('2017-03-10'),
-                    new CallBackUrl('')
-                )
+                    new CallBackUrl(''),
+                ],
             ],
             [
                 'editCustomer',
                 'editCustomer',
-                array(
+                [
                     new StringValueObject(''),
                     new CustomerAction(CustomerAction::INSERT),
-                    new CallBackUrl('')
-                )
+                    new CallBackUrl(''),
+                ],
             ],
         ];
     }

@@ -28,9 +28,9 @@ class AbstractServiceTest extends ThreeDCartTestCase
     public function setUp()
     {
         $this->requestInterfaceMock = $this->getRequestInterfaceMock();
-        $this->subjectUnderTest     = $this->getMockBuilder(AbstractService::class)
+        $this->subjectUnderTest = $this->getMockBuilder(AbstractService::class)
                                            ->setConstructorArgs([
-                                               $this->requestInterfaceMock
+                                               $this->requestInterfaceMock,
                                            ])
                                            ->getMockForAbstractClass();
     }
@@ -62,7 +62,7 @@ class AbstractServiceTest extends ThreeDCartTestCase
         $this->invokeMethod($this->subjectUnderTest, 'generateRequestParameter', [
             $selectListInterface,
             $filterInterface,
-            $sortInterface
+            $sortInterface,
         ]);
     }
     
@@ -89,28 +89,29 @@ class AbstractServiceTest extends ThreeDCartTestCase
         
         $filterInterfaceMock = $this->getMockBuilder(FilterListInterface::class)->getMockForAbstractClass();
         $filterInterfaceMock->method('getHttpParameterList')->willReturn(
-            new HttpParameterList([
+            new HttpParameterList(
+                [
                     new HttpParameter(
                         new StringValueObject('key'),
                         new StringValueObject('value')
-                    )
+                    ),
                 ]
             )
         );
         
         return [
-            'default parameter'              => [
+            'default parameter' => [
                 [
                     new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                     new ApiPathAppendix(''),
                     new HttpParameterList(),
-                    new HttpParameterList()
+                    new HttpParameterList(),
                 ],
                 null,
                 null,
-                null
+                null,
             ],
-            'select parameter only'          => [
+            'select parameter only' => [
                 [
                     new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                     new ApiPathAppendix(''),
@@ -119,16 +120,16 @@ class AbstractServiceTest extends ThreeDCartTestCase
                             new HttpParameter(
                                 new StringValueObject('$select'),
                                 new StringValueObject('test,test2')
-                            )
+                            ),
                         ]
                     ),
-                    new HttpParameterList()
+                    new HttpParameterList(),
                 ],
                 clone $selectInterfaceMock,
                 null,
-                null
+                null,
             ],
-            'sort parameter only'            => [
+            'sort parameter only' => [
                 [
                     new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                     new ApiPathAppendix(''),
@@ -137,14 +138,14 @@ class AbstractServiceTest extends ThreeDCartTestCase
                             new HttpParameter(
                                 new StringValueObject('$orderby'),
                                 new StringValueObject('test asc,test2 desc')
-                            )
+                            ),
                         ]
                     ),
-                    new HttpParameterList()
+                    new HttpParameterList(),
                 ],
                 null,
                 null,
-                clone $sortInterfaceMock
+                clone $sortInterfaceMock,
             ],
             'customer filter parameter only' => [
                 [
@@ -155,16 +156,16 @@ class AbstractServiceTest extends ThreeDCartTestCase
                             new HttpParameter(
                                 new StringValueObject('key'),
                                 new StringValueObject('value')
-                            )
+                            ),
                         ]
                     ),
-                    new HttpParameterList()
+                    new HttpParameterList(),
                 ],
                 null,
                 clone $filterInterfaceMock,
-                null
+                null,
             ],
-            'all parameters are set'         => [
+            'all parameters are set' => [
                 [
                     new HttpMethod(HttpMethod::HTTP_METHOD_GET),
                     new ApiPathAppendix(''),
@@ -181,14 +182,14 @@ class AbstractServiceTest extends ThreeDCartTestCase
                             new HttpParameter(
                                 new StringValueObject('$select'),
                                 new StringValueObject('test,test2')
-                            )
+                            ),
                         ]
                     ),
-                    new HttpParameterList()
+                    new HttpParameterList(),
                 ],
                 clone $selectInterfaceMock,
                 clone $filterInterfaceMock,
-                clone $sortInterfaceMock
+                clone $sortInterfaceMock,
             ],
         ];
     }

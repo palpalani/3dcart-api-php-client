@@ -3,8 +3,8 @@
 namespace tests\Unit\Api\Rest\Request;
 
 use tests\Unit\ThreeDCartTestCase;
-use ThreeDCart\Api\Rest\Request\HttpParameterList;
 use ThreeDCart\Api\Rest\Request\HttpParameter;
+use ThreeDCart\Api\Rest\Request\HttpParameterList;
 use ThreeDCart\Primitive\StringValueObject;
 
 /**
@@ -57,7 +57,7 @@ class HttpParameterListTest extends ThreeDCartTestCase
         
         $simpleArray = $this->subjectUnderTest->getSimpleParameterArray();
         
-        $this->assertEquals(array('testKey' => 'testValue'), $simpleArray);
+        $this->assertEquals(['testKey' => 'testValue'], $simpleArray);
     }
     
     public function testClear()

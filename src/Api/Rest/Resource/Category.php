@@ -13,7 +13,7 @@ use ThreeDCart\Api\Rest\Resource\Category\OptionSet;
 class Category extends AbstractResource
 {
     protected static $lists = [
-        'OptionSetList' => OptionSet::class
+        'OptionSetList' => OptionSet::class,
     ];
     
     /** @var int */

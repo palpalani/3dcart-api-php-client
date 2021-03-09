@@ -58,7 +58,7 @@ class ServicesTest extends ThreeDCartTestCase
             new Guzzle(
                 new Client([
                     'base_uri' => Factory::THREEDCART_SOAP_API_URL . 'v1/' . Service::PRODUCTS
-                        . '/'
+                        . '/',
                 ]),
                 $this->authenticationService
             )
@@ -78,14 +78,14 @@ class ServicesTest extends ThreeDCartTestCase
     public function provideServicesAndMethodsForResponseList()
     {
         return [
-            'Customer - getCustomers'    => [
+            'Customer - getCustomers' => [
                 Customer::class,
                 Customers::class,
                 'getCustomers',
                 [
                     null,
                     null,
-                    null
+                    null,
                 ],
             ],
             'Categories - getCategories' => [
@@ -95,17 +95,17 @@ class ServicesTest extends ThreeDCartTestCase
                 [
                     null,
                     null,
-                    null
+                    null,
                 ],
             ],
-            'Product - getProducts'      => [
+            'Product - getProducts' => [
                 Product::class,
                 Products::class,
                 'getProducts',
                 [
                     null,
                     null,
-                    null
+                    null,
                 ],
             ],
         ];

@@ -9,8 +9,8 @@ use ThreeDCart\Primitive\StringValueObject;
 
 class Guzzle implements RequestInterface
 {
-    const OPTION_HEADERS     = 'headers';
-    const OPTION_VERIFY      = 'verify';
+    const OPTION_HEADERS = 'headers';
+    const OPTION_VERIFY = 'verify';
     const OPTION_FORM_PARAMS = 'form_params';
     
     /** @var ClientInterface */
@@ -25,7 +25,7 @@ class Guzzle implements RequestInterface
      */
     public function __construct(ClientInterface $requestClient, AuthenticationServiceInterface $authenticationService)
     {
-        $this->requestClient         = $requestClient;
+        $this->requestClient = $requestClient;
         $this->authenticationService = $authenticationService;
     }
     
@@ -78,10 +78,10 @@ class Guzzle implements RequestInterface
     {
         $guzzleOptions = [
             self::OPTION_HEADERS => $this->authenticationService->getHttpHeaders()->getValue(),
-            self::OPTION_VERIFY  => false
+            self::OPTION_VERIFY => false,
         ];
         
-        if (!$httpPostList->isEmpty()->getBoolValue()) {
+        if (! $httpPostList->isEmpty()->getBoolValue()) {
             $guzzleOptions[self::OPTION_FORM_PARAMS] = $httpPostList->getSimpleParameterArray();
         }
         
@@ -97,7 +97,7 @@ class Guzzle implements RequestInterface
     private function getUrl(ApiPathAppendix $apiPathAppendix, HttpParameterList $httpGetParameterList)
     {
         $url = $apiPathAppendix;
-        if (!$httpGetParameterList->isEmpty()->getBoolValue()) {
+        if (! $httpGetParameterList->isEmpty()->getBoolValue()) {
             $url = new StringValueObject(
                 $url->getStringValue() . '?' . $httpGetParameterList->buildHttpQuery()->getStringValue()
             );

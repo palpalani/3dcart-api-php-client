@@ -8,6 +8,8 @@ use ThreeDCart\Api\Soap\Parameter\BatchSize;
 use ThreeDCart\Api\Soap\Parameter\CallBackUrl;
 use ThreeDCart\Api\Soap\Parameter\StartNum;
 use ThreeDCart\Api\Soap\Request\ClientInterface;
+use ThreeDCart\Api\Soap\Request\ResponseHandler;
+use ThreeDCart\Api\Soap\Request\Xml\SimpleXmlExceptionRenderer;
 use ThreeDCart\Api\Soap\Resource\Customer\Address;
 use ThreeDCart\Api\Soap\Resource\Customer\Customer;
 use ThreeDCart\Api\Soap\Resource\Order\AffiliateInformation;
@@ -24,8 +26,6 @@ use ThreeDCart\Api\Soap\Resource\Order\Status;
 use ThreeDCart\Api\Soap\Resource\Order\Transaction;
 use ThreeDCart\Api\Soap\Resource\Product\Product;
 use ThreeDCart\Api\Soap\Resource\ResourceParser;
-use ThreeDCart\Api\Soap\Request\ResponseHandler;
-use ThreeDCart\Api\Soap\Request\Xml\SimpleXmlExceptionRenderer;
 use ThreeDCart\Api\Soap\Response\Xml;
 use ThreeDCart\Primitive\BooleanValueObject;
 use ThreeDCart\Primitive\IntegerValueObject;
@@ -45,11 +45,11 @@ class ClientTest extends ThreeDCartTestCase
     {
         $this->subjectUnderTest = $this->getMockBuilder(Client::class)
                                        ->setMethods(null)
-                                       ->setConstructorArgs(array(
+                                       ->setConstructorArgs([
                                            $this->getMockForAbstractClass(ClientInterface::class),
                                            new ResponseHandler(new SimpleXmlExceptionRenderer()),
-                                           new ResourceParser()
-                                       ))
+                                           new ResourceParser(),
+                                       ])
                                        ->getMock()
         ;
     }
@@ -151,8 +151,10 @@ class ClientTest extends ThreeDCartTestCase
             new CallBackUrl('')
         );
         
-        $this->assertEquals('fhWZ2A1EX49XV9Z7dwqUbZsMn/uDrQeEgKZ4ubaHMdwcp2IyRISw789d0beK7+f3',
-            $customerLoginToken->getToken());
+        $this->assertEquals(
+            'fhWZ2A1EX49XV9Z7dwqUbZsMn/uDrQeEgKZ4ubaHMdwcp2IyRISw789d0beK7+f3',
+            $customerLoginToken->getToken()
+        );
     }
     
     public function testGetOrders()
@@ -236,8 +238,10 @@ class ClientTest extends ThreeDCartTestCase
         $this->assertEquals($firstOrder->getGiftCertificatePurchased()->getAmount(), '1350.99');
         $this->assertEquals($firstOrder->getGiftCertificatePurchased()->getToName(), 'You');
         $this->assertEquals($firstOrder->getGiftCertificatePurchased()->getToEmail(), 'test@3dcart.com');
-        $this->assertEquals($firstOrder->getGiftCertificatePurchased()->getToMessage(),
-            '##test order message for gift');
+        $this->assertEquals(
+            $firstOrder->getGiftCertificatePurchased()->getToMessage(),
+            '##test order message for gift'
+        );
         $this->assertEquals($firstOrder->getGiftCertificatePurchased()->getFromName(), 'Me');
         
         $this->assertInstanceOf(GiftCertificateUsed::class, $firstOrder->getGiftCertificateUsed());
@@ -416,9 +420,9 @@ class ClientTest extends ThreeDCartTestCase
         
         $result = $this->subjectUnderTest->updateCustomer(
             $customer,
-            array(
-                Customer::EDIT_CUSTOMER_CONTACTID
-            ),
+            [
+                Customer::EDIT_CUSTOMER_CONTACTID,
+            ],
             new CallBackUrl('')
         );
         
@@ -435,9 +439,9 @@ class ClientTest extends ThreeDCartTestCase
         
         $result = $this->subjectUnderTest->updateCustomer(
             $customer,
-            array(
-                Customer::EDIT_CUSTOMER_ALT_CONTACTID
-            ),
+            [
+                Customer::EDIT_CUSTOMER_ALT_CONTACTID,
+            ],
             new CallBackUrl('')
         );
         
@@ -467,7 +471,7 @@ class ClientTest extends ThreeDCartTestCase
      */
     private function getSoapClientMock($mockMethod, $calledMethod = null)
     {
-        $methods        = array(
+        $methods = [
             '__construct',
             'getProduct',
             'getCustomers',
@@ -481,10 +485,10 @@ class ClientTest extends ThreeDCartTestCase
             'updateProductInventory',
             'updateOrderStatus',
             'updateOrderShipment',
-            'editCustomer'
-        );
+            'editCustomer',
+        ];
         $soapClientMock = $this->getMockBuilder(ClientInterface::class)
-                               ->setConstructorArgs(array('', ''))
+                               ->setConstructorArgs(['', ''])
                                ->setMethods($methods)
                                ->getMock()
         ;

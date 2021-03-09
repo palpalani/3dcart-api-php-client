@@ -17,11 +17,11 @@ use ThreeDCart\Api\Rest\Resource\Order\Transaction;
 class Order extends AbstractResource
 {
     protected static $lists = [
-        'ShipmentList'    => Shipment::class,
-        'OrderItemList'   => OrderItem::class,
-        'PromotionList'   => Promotion::class,
+        'ShipmentList' => Shipment::class,
+        'OrderItemList' => OrderItem::class,
+        'PromotionList' => Promotion::class,
         'TransactionList' => Transaction::class,
-        'QuestionList'    => Question::class,
+        'QuestionList' => Question::class,
     ];
     
     /** @var string */

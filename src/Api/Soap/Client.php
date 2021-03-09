@@ -19,8 +19,8 @@ use ThreeDCart\Api\Soap\Resource\Product\Product;
 use ThreeDCart\Api\Soap\Resource\Product\ProductInventory;
 use ThreeDCart\Api\Soap\Resource\ResourceParserInterface;
 use ThreeDCart\Api\Soap\Resource\SoapResource;
-use ThreeDCart\Primitive\ArrayValueObject;
 use ThreeDCart\Api\Soap\Response\Xml;
+use ThreeDCart\Primitive\ArrayValueObject;
 use ThreeDCart\Primitive\BooleanValueObject;
 use ThreeDCart\Primitive\IntegerValueObject;
 use ThreeDCart\Primitive\StringValueObject;
@@ -34,19 +34,19 @@ class Client
 {
     const THREEDCART_SOAP_API_URL = 'http://api.3dcart.com/cart.asmx';
     
-    const XML_TAG_PRODUCT             = 'Product';
-    const XML_TAG_CUSTOMER            = 'Customer';
-    const XML_TAG_PRODUCT_QUANTITY    = 'ProductQuantity';
-    const XML_TAG_CUSTOMER_COUNT      = 'CustomerCount';
-    const XML_TAG_ORDER_QUANTITY      = 'Quantity';
-    const XML_TAG_ORDER               = 'Order';
+    const XML_TAG_PRODUCT = 'Product';
+    const XML_TAG_CUSTOMER = 'Customer';
+    const XML_TAG_PRODUCT_QUANTITY = 'ProductQuantity';
+    const XML_TAG_CUSTOMER_COUNT = 'CustomerCount';
+    const XML_TAG_ORDER_QUANTITY = 'Quantity';
+    const XML_TAG_ORDER = 'Order';
     const XML_TAG_CUSTOMER_CONTACT_ID = 'contactid';
-    const XML_TAG_Product_ID          = 'ProductID';
-    const XML_TAG_NEW_INVENTORY       = 'NewInventory';
-    const XML_TAG_INVOICE_NUM         = 'InvoiceNum';
-    const XML_TAG_NEW_STATUS          = 'NewStatus';
-    const XML_TAG_RESULT              = 'result';
-    const XML_TAG_RESULT_OK           = 'OK';
+    const XML_TAG_Product_ID = 'ProductID';
+    const XML_TAG_NEW_INVENTORY = 'NewInventory';
+    const XML_TAG_INVOICE_NUM = 'InvoiceNum';
+    const XML_TAG_NEW_STATUS = 'NewStatus';
+    const XML_TAG_RESULT = 'result';
+    const XML_TAG_RESULT_OK = 'OK';
     
     /** @var ClientInterface */
     private $soapClient;
@@ -65,9 +65,9 @@ class Client
         ResponseHandlerInterface $responseHandler,
         ResourceParserInterface $resourceParser
     ) {
-        $this->soapClient      = $soapClient;
+        $this->soapClient = $soapClient;
         $this->responseHandler = $responseHandler;
-        $this->resourceParser  = $resourceParser;
+        $this->resourceParser = $resourceParser;
     }
     
     /**
@@ -381,8 +381,12 @@ class Client
         }
         
         $xmlResponse =
-            $this->editCustomer($customer, $customerDataFieldList, new CustomerAction(CustomerAction::UPDATE),
-                $callBackUrl);
+            $this->editCustomer(
+                $customer,
+                $customerDataFieldList,
+                new CustomerAction(CustomerAction::UPDATE),
+                $callBackUrl
+            );
         
         return $this->isResultOk($this->getArrayValueObject($xmlResponse));
     }
@@ -412,10 +416,11 @@ class Client
         $xmlResponse = $this->soapClient->editCustomer(
             $this->convertCustomerData($generatedCustomerData),
             new CustomerAction(CustomerAction::INSERT),
-            $callBackUrl);
+            $callBackUrl
+        );
         
         $arrayResponse = $this->getArrayValueObject($xmlResponse);
-        $isResultOk    = $this->isResultOk($arrayResponse);
+        $isResultOk = $this->isResultOk($arrayResponse);
         
         if ($isResultOk->getBoolValue()
             && $arrayResponse->issetKey(new StringValueObject(self::XML_TAG_CUSTOMER_CONTACT_ID))
@@ -438,7 +443,7 @@ class Client
     public function deleteCustomer(Customer $customer, CallBackUrl $callBackUrl)
     {
         $xmlResponse =
-            $this->editCustomer($customer, array(), new CustomerAction(CustomerAction::DELETE), $callBackUrl);
+            $this->editCustomer($customer, [], new CustomerAction(CustomerAction::DELETE), $callBackUrl);
         
         return $this->isResultOk($this->getArrayValueObject($xmlResponse));
     }
@@ -465,7 +470,8 @@ class Client
                 )
             ),
             $action,
-            $callBackUrl);
+            $callBackUrl
+        );
     }
     
     /**
@@ -496,7 +502,7 @@ class Client
             return $this->resourceParser->getResources($className, $objectData);
         }
         
-        return array($this->resourceParser->getResource($className, $objectData));
+        return [$this->resourceParser->getResource($className, $objectData)];
     }
     
     /**
@@ -561,7 +567,8 @@ class Client
             === $productId->getStringValue()
             && $response->issetKey(new StringValueObject(self::XML_TAG_NEW_INVENTORY))
             && $response->getIntegerValueObject(new StringValueObject(self::XML_TAG_NEW_INVENTORY))->getIntValue()
-            === $quantity->getIntValue());
+            === $quantity->getIntValue()
+        );
     }
     
     /**
@@ -605,7 +612,7 @@ class Client
     {
         $altCustomerId = $customer->getUserID();
         
-        return new StringValueObject(!empty($altCustomerId) ? Customer::EDIT_CUSTOMER_ALT_CONTACTID
+        return new StringValueObject(! empty($altCustomerId) ? Customer::EDIT_CUSTOMER_ALT_CONTACTID
             : Customer::EDIT_CUSTOMER_CONTACTID);
     }
     
@@ -614,9 +621,9 @@ class Client
      */
     protected function insertCustomerCheckRequiredFields(array $generatedCustomerData)
     {
-        $requiredFields = array('billing_firstname', 'billing_lastname', 'email', 'pass');
+        $requiredFields = ['billing_firstname', 'billing_lastname', 'email', 'pass'];
         foreach ($requiredFields as $requiredField) {
-            if (!isset($generatedCustomerData[$requiredField])) {
+            if (! isset($generatedCustomerData[$requiredField])) {
                 throw new \InvalidArgumentException(
                     'the field: ' . $requiredField . ' is required when inserting a new customer!'
                 );
@@ -631,7 +638,7 @@ class Client
      */
     protected function convertCustomerData(array $customerData)
     {
-        $temporaryCustomerData = array();
+        $temporaryCustomerData = [];
         foreach ($customerData as $key => $value) {
             if ($value === null) {
                 continue;
@@ -681,7 +688,7 @@ class Client
     protected function extractSpecificXmlTagAsArray(StringValueObject $responseXmlTag, ArrayValueObject $apiResponse)
     {
         $arrResponse = $apiResponse->getValue();
-        if (!isset($arrResponse[$responseXmlTag->getStringValue()])) {
+        if (! isset($arrResponse[$responseXmlTag->getStringValue()])) {
             throw new MalFormedApiResponseException('xml tag ' . $responseXmlTag->getStringValue() . ' is missing');
         }
         
@@ -699,7 +706,7 @@ class Client
     protected function extractSpecificXmlTagAsString(StringValueObject $responseXmlTag, ArrayValueObject $apiResponse)
     {
         $arrResponse = $apiResponse->getValue();
-        if (!isset($arrResponse[$responseXmlTag->getStringValue()])) {
+        if (! isset($arrResponse[$responseXmlTag->getStringValue()])) {
             throw new MalFormedApiResponseException('xml tag ' . $responseXmlTag->getStringValue() . ' is missing');
         }
         

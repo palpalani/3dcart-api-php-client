@@ -25,8 +25,8 @@ class LimitTest extends ThreeDCartTestCase
     {
         return [
             'maximum limit exceeded' => [
-                501
-            ]
+                501,
+            ],
         ];
     }
 }

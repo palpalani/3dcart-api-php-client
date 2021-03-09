@@ -68,7 +68,7 @@ class ServicesTest extends ThreeDCartTestCase
         
         $this->assertEquals($expectedValues, [
             $generatedObjects[0]->{$responseObjectFieldName},
-            $generatedObjects[1]->{$responseObjectFieldName}
+            $generatedObjects[1]->{$responseObjectFieldName},
         ]);
     }
     
@@ -78,7 +78,7 @@ class ServicesTest extends ThreeDCartTestCase
     public function provideServicesAndMethodsForResponseLists()
     {
         return [
-            'Customer - getCustomers'            => [
+            'Customer - getCustomers' => [
                 Customer::class,
                 [123, 234],
                 Customers::class,
@@ -86,12 +86,12 @@ class ServicesTest extends ThreeDCartTestCase
                 [
                     null,
                     null,
-                    null
+                    null,
                 ],
                 '[{"CustomerID" : 123}, {"CustomerID" : 234}]',
-                'CustomerID'
+                'CustomerID',
             ],
-            'Categories - getCategories'         => [
+            'Categories - getCategories' => [
                 Category::class,
                 [23, 45],
                 Categories::class,
@@ -99,12 +99,12 @@ class ServicesTest extends ThreeDCartTestCase
                 [
                     null,
                     null,
-                    null
+                    null,
                 ],
                 '[{"CategoryID" : 23}, {"CategoryID" : 45}]',
-                'CategoryID'
+                'CategoryID',
             ],
-            'Product - getProducts'              => [
+            'Product - getProducts' => [
                 Product::class,
                 ['MPNNUMBER11', 'MPNNUMBER12'],
                 Products::class,
@@ -112,10 +112,10 @@ class ServicesTest extends ThreeDCartTestCase
                 [
                     null,
                     null,
-                    null
+                    null,
                 ],
                 '[{"MFGID" : "MPNNUMBER11"}, {"MFGID" : "MPNNUMBER12"}]',
-                'MFGID'
+                'MFGID',
             ],
             'CustomerGroups - getCustomerGroups' => [
                 CustomerGroup::class,
@@ -125,12 +125,12 @@ class ServicesTest extends ThreeDCartTestCase
                 [
                     null,
                     null,
-                    null
+                    null,
                 ],
                 '[{"CustomerGroupID" : 1234}, {"CustomerGroupID" : 321}]',
-                'CustomerGroupID'
+                'CustomerGroupID',
             ],
-            'Orders - getOrders'                 => [
+            'Orders - getOrders' => [
                 Order::class,
                 ['AB-', 'ABC-'],
                 Orders::class,
@@ -138,10 +138,10 @@ class ServicesTest extends ThreeDCartTestCase
                 [
                     null,
                     null,
-                    null
+                    null,
                 ],
                 '[{"InvoiceNumberPrefix" : "AB-"}, {"InvoiceNumberPrefix" : "ABC-"}]',
-                'InvoiceNumberPrefix'
+                'InvoiceNumberPrefix',
             ],
         ];
     }

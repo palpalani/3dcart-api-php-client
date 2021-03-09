@@ -15,7 +15,7 @@ class CustomerAction extends Enum
     const UPDATE = 'update';
     const DELETE = 'delete';
     
-    public static $allowedValues = array(self::INSERT, self::UPDATE, self::DELETE);
+    public static $allowedValues = [self::INSERT, self::UPDATE, self::DELETE];
     
     /**
      * @return string

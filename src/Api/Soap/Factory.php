@@ -2,11 +2,11 @@
 
 namespace ThreeDCart\Api\Soap;
 
+use ThreeDCart\Api\Soap\Request\PhpDefaultAdvancedClient as AdvancedPhpDefault;
 use ThreeDCart\Api\Soap\Request\PhpDefaultClient;
 use ThreeDCart\Api\Soap\Request\ResponseHandler;
-use ThreeDCart\Api\Soap\Resource\ResourceParser;
-use ThreeDCart\Api\Soap\Request\PhpDefaultAdvancedClient as AdvancedPhpDefault;
 use ThreeDCart\Api\Soap\Request\Xml\SimpleXmlExceptionRenderer;
+use ThreeDCart\Api\Soap\Resource\ResourceParser;
 use ThreeDCart\Primitive\StringValueObject;
 
 /**
@@ -28,16 +28,17 @@ class Factory
         
         $soapClient = new \SoapClient(
             Client::THREEDCART_SOAP_API_URL . '?WSDL',
-            array(
-                'cache_wsdl'   => WSDL_CACHE_MEMORY,
-                'soap_version' => SOAP_1_2
-            )
+            [
+                'cache_wsdl' => WSDL_CACHE_MEMORY,
+                'soap_version' => SOAP_1_2,
+            ]
         );
         
         return new Client(
             new PhpDefaultClient($soapClient, $responseHandler, $threeDCartStoreUrl, $threeDCartApiKey),
             $responseHandler,
-            new ResourceParser());
+            new ResourceParser()
+        );
     }
     
     /**
@@ -50,10 +51,10 @@ class Factory
     {
         $soapClient = new \SoapClient(
             AdvancedClient::THREEDCART_SOAP_API_URL . '?WSDL',
-            array(
-                'cache_wsdl'   => WSDL_CACHE_MEMORY,
-                'soap_version' => SOAP_1_2
-            )
+            [
+                'cache_wsdl' => WSDL_CACHE_MEMORY,
+                'soap_version' => SOAP_1_2,
+            ]
         );
         
         return new AdvancedClient(

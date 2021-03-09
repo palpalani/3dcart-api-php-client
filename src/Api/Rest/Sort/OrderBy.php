@@ -26,7 +26,7 @@ class OrderBy implements OrderByInterface
         }
         
         $this->sortOrder = $sortOrder;
-        $this->orderBy   = $orderBy;
+        $this->orderBy = $orderBy;
     }
     
     /**

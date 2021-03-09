@@ -31,20 +31,20 @@ class PhpDefaultAdvancedClient implements AdvancedClientInterface
         StringValueObject $threeDCartStoreUrl,
         StringValueObject $threeDCartApiKey
     ) {
-        $this->soapClient         = $soapClient;
+        $this->soapClient = $soapClient;
         $this->threeDCartStoreUrl = $threeDCartStoreUrl;
-        $this->threeDCartApiKey   = $threeDCartApiKey;
+        $this->threeDCartApiKey = $threeDCartApiKey;
     }
     
     public function runQuery(StringValueObject $sql, StringValueObject $callBackUrl = null)
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $soapResponse = $this->soapClient->runQuery(array(
-            'storeUrl'     => $this->threeDCartStoreUrl->getStringValue(),
-            'userKey'      => $this->threeDCartApiKey->getStringValue(),
+        $soapResponse = $this->soapClient->runQuery([
+            'storeUrl' => $this->threeDCartStoreUrl->getStringValue(),
+            'userKey' => $this->threeDCartApiKey->getStringValue(),
             'sqlStatement' => $sql->getStringValue(),
-            'callBackURL'  => is_null($callBackUrl) ? '' : $callBackUrl->getStringValue()
-        ));
+            'callBackURL' => is_null($callBackUrl) ? '' : $callBackUrl->getStringValue(),
+        ]);
         
         $this->checkEmptyResponse($soapResponse, new StringValueObject(self::THREEDCART_RUN_QUERY_RESULT_FIELD));
         

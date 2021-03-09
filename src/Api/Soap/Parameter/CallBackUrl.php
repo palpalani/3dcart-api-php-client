@@ -20,7 +20,7 @@ class CallBackUrl extends StringValueObject
     {
         parent::__construct($value);
         
-        if (!empty($value) && filter_var($this->getStringValue(), FILTER_VALIDATE_URL) === false) {
+        if (! empty($value) && filter_var($this->getStringValue(), FILTER_VALIDATE_URL) === false) {
             throw new \InvalidArgumentException('passed $value is not a valid url: ' . $value);
         }
     }

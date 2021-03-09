@@ -21,7 +21,7 @@ class CustomerTest extends ThreeDCartTestCase
     
     public function setup()
     {
-        $this->sortOrder        = new SortOrder(SortOrder::SORTING_DESC);
+        $this->sortOrder = new SortOrder(SortOrder::SORTING_DESC);
         $this->subjectUnderTest = new OrderBy(
             new Customer(
                 Customer::BILLINGLASTNAME

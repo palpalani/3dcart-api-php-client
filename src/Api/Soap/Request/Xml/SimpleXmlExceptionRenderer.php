@@ -16,7 +16,7 @@ class SimpleXmlExceptionRenderer
      */
     public function getErrorMessage(array $libXmlErrors)
     {
-        $messages = array();
+        $messages = [];
         foreach ($libXmlErrors as $libXmlError) {
             $messages[] = $this->getErrorLevelName($libXmlError->level) . ' ' . $libXmlError->code . ': '
                 . str_replace("\n", '', $libXmlError->message) . ' on line ' . $libXmlError->line . ' in column '
@@ -33,19 +33,22 @@ class SimpleXmlExceptionRenderer
      */
     private function getErrorLevelName($errorLevel)
     {
-        if (!is_int($errorLevel)) {
+        if (! is_int($errorLevel)) {
             return '';
         }
         switch ($errorLevel) {
             case LIBXML_ERR_WARNING:
                 return 'Warning';
+
                 break;
             case LIBXML_ERR_FATAL:
                 return 'Fatal Error';
+
                 break;
             default:
             case LIBXML_ERR_ERROR:
                 return 'Error';
+
                 break;
         }
     }

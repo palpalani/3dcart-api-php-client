@@ -40,25 +40,25 @@ class AbstractResourceTest extends ThreeDCartTestCase
     public function provideResourcesForCreateResource()
     {
         return [
-            'customer resource'       => [
+            'customer resource' => [
                 Customer::class,
-                $this->loadMock('getCustomer', 'response.json')
+                $this->loadMock('getCustomer', 'response.json'),
             ],
-            'category resource'       => [
+            'category resource' => [
                 Category::class,
-                $this->loadMock('getCategory', 'response.json')
+                $this->loadMock('getCategory', 'response.json'),
             ],
-            'product resource'        => [
+            'product resource' => [
                 Product::class,
-                $this->loadMock('getProduct', 'response.json')
+                $this->loadMock('getProduct', 'response.json'),
             ],
             'customer group resource' => [
                 CustomerGroup::class,
-                $this->loadMock('getCustomerGroup', 'response.json')
+                $this->loadMock('getCustomerGroup', 'response.json'),
             ],
-            'order resource'          => [
+            'order resource' => [
                 Order::class,
-                $this->loadMock('getOrder', 'response.json')
+                $this->loadMock('getOrder', 'response.json'),
             ],
         ];
     }
@@ -85,25 +85,25 @@ class AbstractResourceTest extends ThreeDCartTestCase
     public function provideResourcesForCreateResources()
     {
         return [
-            'customer resources'       => [
+            'customer resources' => [
                 Customer::class,
-                $this->loadMock('getCustomers', 'response.json')
+                $this->loadMock('getCustomers', 'response.json'),
             ],
-            'category resources'       => [
+            'category resources' => [
                 Category::class,
-                $this->loadMock('getCategories', 'response.json')
+                $this->loadMock('getCategories', 'response.json'),
             ],
-            'product resources'        => [
+            'product resources' => [
                 Product::class,
-                $this->loadMock('getProducts', 'response.json')
+                $this->loadMock('getProducts', 'response.json'),
             ],
             'customer group resources' => [
                 CustomerGroup::class,
-                $this->loadMock('getCustomerGroups', 'response.json')
+                $this->loadMock('getCustomerGroups', 'response.json'),
             ],
-            'order resources'          => [
+            'order resources' => [
                 Order::class,
-                $this->loadMock('getOrders', 'response.json')
+                $this->loadMock('getOrders', 'response.json'),
             ],
         ];
     }

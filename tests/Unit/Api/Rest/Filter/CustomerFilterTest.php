@@ -3,8 +3,8 @@
 namespace tests\Unit\Api\Rest\Filter;
 
 use tests\Unit\ThreeDCartTestCase;
-use ThreeDCart\Api\Rest\Filter\CustomerFilterList;
 use ThreeDCart\Api\Rest\Filter\Customer\Limit;
+use ThreeDCart\Api\Rest\Filter\CustomerFilterList;
 use ThreeDCart\Primitive\BooleanValueObject;
 use ThreeDCart\Primitive\StringValueObject;
 use ThreeDCart\Primitive\UnsignedIntegerValueObject;
@@ -49,7 +49,7 @@ class CustomerFilterTest extends ThreeDCartTestCase
         
         $this->assertEquals([
             CustomerFilterList::FILTER_COUNTONLY => true,
-            CustomerFilterList::FILTER_LIMIT     => 2
+            CustomerFilterList::FILTER_LIMIT => 2,
         ], $httpPostList->getSimpleParameterArray());
     }
     
@@ -75,70 +75,70 @@ class CustomerFilterTest extends ThreeDCartTestCase
     public function provideFilterCases()
     {
         return [
-            'limit'           => [
+            'limit' => [
                 [CustomerFilterList::FILTER_LIMIT => 3],
                 'filterLimit',
-                new Limit(3)
+                new Limit(3),
             ],
-            'offset'          => [
+            'offset' => [
                 [CustomerFilterList::FILTER_OFFSET => 4],
                 'filterOffset',
-                new UnsignedIntegerValueObject(4)
+                new UnsignedIntegerValueObject(4),
             ],
-            'email'           => [
+            'email' => [
                 [CustomerFilterList::FILTER_EMAIL => 'test'],
                 'filterEmail',
-                new StringValueObject('test')
+                new StringValueObject('test'),
             ],
-            'firstname'       => [
+            'firstname' => [
                 [CustomerFilterList::FILTER_FIRSTNAME => 'test'],
                 'filterFirstName',
-                new StringValueObject('test')
+                new StringValueObject('test'),
             ],
-            'lastname'        => [
+            'lastname' => [
                 [CustomerFilterList::FILTER_LASTNAME => 'test'],
                 'filterLastName',
-                new StringValueObject('test')
+                new StringValueObject('test'),
             ],
-            'country'         => [
+            'country' => [
                 [CustomerFilterList::FILTER_COUNTRY => 'test'],
                 'filterCountry',
-                new StringValueObject('test')
+                new StringValueObject('test'),
             ],
-            'state'           => [
+            'state' => [
                 [CustomerFilterList::FILTER_STATE => 'test'],
                 'filterState',
-                new StringValueObject('test')
+                new StringValueObject('test'),
             ],
-            'city'            => [
+            'city' => [
                 [CustomerFilterList::FILTER_CITY => 'test'],
                 'filterCity',
-                new StringValueObject('test')
+                new StringValueObject('test'),
             ],
-            'phone'           => [
+            'phone' => [
                 [CustomerFilterList::FILTER_PHONE => 'test'],
                 'filterPhone',
-                new StringValueObject('test')
+                new StringValueObject('test'),
             ],
             'countonly false' => [
                 [CustomerFilterList::FILTER_COUNTONLY => 0],
                 'filterCountOnly',
-                new BooleanValueObject(false)
+                new BooleanValueObject(false),
             ],
-            'countonly true'  => [
+            'countonly true' => [
                 [CustomerFilterList::FILTER_COUNTONLY => 1],
                 'filterCountOnly',
-                new BooleanValueObject(true)
+                new BooleanValueObject(true),
             ],
             'lastupdatestart' => [
                 [CustomerFilterList::FILTER_LASTUPDATESTART => 'test'],
                 'filterLastUpdateStart',
-                new StringValueObject('test')
+                new StringValueObject('test'),
             ],
-            'lastupdateend'   => [
+            'lastupdateend' => [
                 [CustomerFilterList::FILTER_LASTUPDATEEND => 'test'],
                 'filterLastUpdateEnd',
-                new StringValueObject('test')
+                new StringValueObject('test'),
             ],
         ];
     }

@@ -324,7 +324,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isOnSale()
     {
@@ -332,7 +332,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $OnSale
+     * @param bool $OnSale
      */
     public function setOnSale($OnSale)
     {
@@ -612,7 +612,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isHomeSpecial()
     {
@@ -620,7 +620,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $HomeSpecial
+     * @param bool $HomeSpecial
      */
     public function setHomeSpecial($HomeSpecial)
     {
@@ -628,7 +628,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isCategorySpecial()
     {
@@ -636,7 +636,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $CategorySpecial
+     * @param bool $CategorySpecial
      */
     public function setCategorySpecial($CategorySpecial)
     {
@@ -644,7 +644,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isHide()
     {
@@ -652,7 +652,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $Hide
+     * @param bool $Hide
      */
     public function setHide($Hide)
     {
@@ -660,7 +660,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isFreeShipping()
     {
@@ -668,7 +668,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $FreeShipping
+     * @param bool $FreeShipping
      */
     public function setFreeShipping($FreeShipping)
     {
@@ -676,7 +676,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isNonTax()
     {
@@ -684,7 +684,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $NonTax
+     * @param bool $NonTax
      */
     public function setNonTax($NonTax)
     {
@@ -692,7 +692,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isNotForsale()
     {
@@ -700,7 +700,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $NotForsale
+     * @param bool $NotForsale
      */
     public function setNotForsale($NotForsale)
     {
@@ -708,7 +708,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isGiftCertificate()
     {
@@ -716,7 +716,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $GiftCertificate
+     * @param bool $GiftCertificate
      */
     public function setGiftCertificate($GiftCertificate)
     {
@@ -836,7 +836,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isUseCatoptions()
     {
@@ -844,7 +844,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $UseCatoptions
+     * @param bool $UseCatoptions
      */
     public function setUseCatoptions($UseCatoptions)
     {
@@ -1012,7 +1012,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isSelfShip()
     {
@@ -1020,7 +1020,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $SelfShip
+     * @param bool $SelfShip
      */
     public function setSelfShip($SelfShip)
     {
@@ -1060,7 +1060,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @return boolean
+     * @return bool
      */
     public function isNonSearchable()
     {
@@ -1068,7 +1068,7 @@ class Product extends SoapResource
     }
     
     /**
-     * @param boolean $NonSearchable
+     * @param bool $NonSearchable
      */
     public function setNonSearchable($NonSearchable)
     {

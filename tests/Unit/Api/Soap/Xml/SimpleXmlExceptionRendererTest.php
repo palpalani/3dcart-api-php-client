@@ -26,6 +26,7 @@ class SimpleXmlExceptionRendererTest extends ThreeDCartTestCase
         libxml_clear_errors();
         
         $messages = '';
+
         try {
             new \SimpleXMLElement("<?xml version='1.0'><broken><xml></broken>");
         } catch (\Exception $ex) {
@@ -38,7 +39,8 @@ class SimpleXmlExceptionRendererTest extends ThreeDCartTestCase
         $this->assertEquals(defined('PHP_WINDOWS_VERSION_MAJOR')
             ? 'Fatal Error 65: Blank needed here on line 1 in column 20'
             : 'Fatal Error 65: Blank needed here on line 1 in column 19', $testMessages[0]);
-        $this->assertEquals(defined('PHP_WINDOWS_VERSION_MAJOR')
+        $this->assertEquals(
+            defined('PHP_WINDOWS_VERSION_MAJOR')
             ? 'Fatal Error 57: parsing XML declaration: \'?>\' expected on line 1 in column 20'
             : 'Fatal Error 57: parsing XML declaration: \'?>\' expected on line 1 in column 19',
             $testMessages[1]
@@ -60,7 +62,7 @@ class SimpleXmlExceptionRendererTest extends ThreeDCartTestCase
     public function testParseLibXMLWarning()
     {
         $messages = $this->subjectUnderTest->getErrorMessage([
-            $this->createLibXMLError(LIBXML_ERR_WARNING, 11, 12, 'test', 13)
+            $this->createLibXMLError(LIBXML_ERR_WARNING, 11, 12, 'test', 13),
         ]);
         
         $testMessages = explode("\n", $messages);
@@ -117,13 +119,13 @@ class SimpleXmlExceptionRendererTest extends ThreeDCartTestCase
      */
     private function createLibXMLError($level, $code, $column, $message, $line, $file = '')
     {
-        $libXMLError          = new \LibXMLError();
-        $libXMLError->level   = $level;
-        $libXMLError->code    = $code;
-        $libXMLError->column  = $column;
+        $libXMLError = new \LibXMLError();
+        $libXMLError->level = $level;
+        $libXMLError->code = $code;
+        $libXMLError->column = $column;
         $libXMLError->message = $message;
-        $libXMLError->file    = $file;
-        $libXMLError->line    = $line;
+        $libXMLError->file = $file;
+        $libXMLError->line = $line;
         
         return $libXMLError;
     }

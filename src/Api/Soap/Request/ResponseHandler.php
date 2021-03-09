@@ -3,8 +3,8 @@
 namespace ThreeDCart\Api\Soap\Request;
 
 use ThreeDCart\Api\Soap\Request\Xml\SimpleXmlExceptionRenderer;
-use ThreeDCart\Primitive\ArrayValueObject;
 use ThreeDCart\Api\Soap\Response\Xml;
+use ThreeDCart\Primitive\ArrayValueObject;
 use ThreeDCart\Primitive\StringValueObject;
 
 /**
@@ -14,8 +14,8 @@ use ThreeDCart\Primitive\StringValueObject;
  */
 class ResponseHandler implements ResponseHandlerInterface
 {
-    const XML_RESPONSE_ERROR       = 'Error';
-    const XML_RESPONSE_ID          = 'Id';
+    const XML_RESPONSE_ERROR = 'Error';
+    const XML_RESPONSE_ID = 'Id';
     const XML_RESPONSE_DESCRIPTION = 'Description';
     
     /** @var SimpleXmlExceptionRenderer */

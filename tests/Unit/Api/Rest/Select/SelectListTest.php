@@ -38,8 +38,10 @@ class SelectListTest extends ThreeDCartTestCase
             new StringValueObject('second select')
         ));
         
-        $this->assertEquals(new StringValueObject('first select,second select'),
-            $this->subjectUnderTest->getQueryString());
+        $this->assertEquals(
+            new StringValueObject('first select,second select'),
+            $this->subjectUnderTest->getQueryString()
+        );
     }
     
     /**

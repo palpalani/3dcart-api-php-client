@@ -29,38 +29,38 @@ class UnsignedIntegerValueObjectTest extends ThreeDCartTestCase
     public function provideNegativeCases()
     {
         return [
-            'object'                  => [
-                new \stdClass()
+            'object' => [
+                new \stdClass(),
             ],
-            'string #invalid'         => [
-                'invalid argument'
+            'string #invalid' => [
+                'invalid argument',
             ],
-            'non valid double'        => [
-                3.4
+            'non valid double' => [
+                3.4,
             ],
-            'boolean #0'              => [
-                false
+            'boolean #0' => [
+                false,
             ],
-            'boolean #1'              => [
-                true
+            'boolean #1' => [
+                true,
             ],
-            'array'                   => [
-                array()
+            'array' => [
+                [],
             ],
-            'null'                    => [
-                null
+            'null' => [
+                null,
             ],
-            'negative int'            => [
-                -1
+            'negative int' => [
+                -1,
             ],
-            'negative double'         => [
-                -1.0
+            'negative double' => [
+                -1.0,
             ],
             'negative string #number' => [
-                '-1'
+                '-1',
             ],
             'empty string' => [
-                ''
+                '',
             ],
         ];
     }
@@ -84,29 +84,29 @@ class UnsignedIntegerValueObjectTest extends ThreeDCartTestCase
     public function providePositiveCases()
     {
         return [
-            'positive int'            => [
+            'positive int' => [
                 5,
-                5
+                5,
             ],
-            'positive double'         => [
+            'positive double' => [
                 3,
-                3.0
+                3.0,
             ],
             'positive string #number' => [
                 5,
-                '5'
+                '5',
             ],
             'positive string zero #2' => [
                 0,
-                '0'
+                '0',
             ],
-            'positive string double'  => [
+            'positive string double' => [
                 3,
-                '3.0'
+                '3.0',
             ],
-            'negative int zero'       => [
+            'negative int zero' => [
                 0,
-                -0
+                -0,
             ],
         ];
     }
@@ -126,10 +126,10 @@ class UnsignedIntegerValueObjectTest extends ThreeDCartTestCase
     {
         return [
             'int zero' => [
-                0
+                0,
             ],
             'double zero' => [
-                0.0
+                0.0,
             ],
         ];
     }

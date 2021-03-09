@@ -12,18 +12,18 @@ use ThreeDCart\Primitive\UnsignedIntegerValueObject;
  */
 class CustomerFilterList extends AbstractFilterList implements CustomerFilterListInterface
 {
-    const FILTER_LIMIT           = 'limit';
-    const FILTER_OFFSET          = 'offset';
-    const FILTER_EMAIL           = 'email';
-    const FILTER_FIRSTNAME       = 'firstname';
-    const FILTER_LASTNAME        = 'lastname';
-    const FILTER_COUNTRY         = 'country';
-    const FILTER_STATE           = 'state';
-    const FILTER_CITY            = 'city';
-    const FILTER_PHONE           = 'phone';
-    const FILTER_COUNTONLY       = 'countronly';
+    const FILTER_LIMIT = 'limit';
+    const FILTER_OFFSET = 'offset';
+    const FILTER_EMAIL = 'email';
+    const FILTER_FIRSTNAME = 'firstname';
+    const FILTER_LASTNAME = 'lastname';
+    const FILTER_COUNTRY = 'country';
+    const FILTER_STATE = 'state';
+    const FILTER_CITY = 'city';
+    const FILTER_PHONE = 'phone';
+    const FILTER_COUNTONLY = 'countronly';
     const FILTER_LASTUPDATESTART = 'lastupdatestart';
-    const FILTER_LASTUPDATEEND   = 'lastupdateend';
+    const FILTER_LASTUPDATEEND = 'lastupdateend';
     
     public static $filter = [
         self::FILTER_LIMIT,
@@ -37,7 +37,7 @@ class CustomerFilterList extends AbstractFilterList implements CustomerFilterLis
         self::FILTER_PHONE,
         self::FILTER_COUNTONLY,
         self::FILTER_LASTUPDATESTART,
-        self::FILTER_LASTUPDATEEND
+        self::FILTER_LASTUPDATEEND,
     ];
     
     public function filterLimit(Limit $limit)

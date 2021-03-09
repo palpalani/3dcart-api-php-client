@@ -12,8 +12,8 @@ use ThreeDCart\Primitive\UnsignedIntegerValueObject;
  */
 class CustomerGroupFilterList extends AbstractFilterList implements CustomerGroupFilterListInterface
 {
-    const FILTER_LIMIT     = "limit";
-    const FILTER_OFFSET    = "offset";
+    const FILTER_LIMIT = "limit";
+    const FILTER_OFFSET = "offset";
     const FILTER_COUNTONLY = "countonly";
     
     public static $filter = [
