@@ -4,7 +4,7 @@ namespace ThreeDCart\Api\Rest\Resource;
 
 abstract class AbstractResource
 {
-    /** @var array(string, string $resourceClass) */
+    /** @var array(string, string) */
     protected static $lists = [];
     /** @var array(string, bool) string is the field name */
     protected static $objects = [];
