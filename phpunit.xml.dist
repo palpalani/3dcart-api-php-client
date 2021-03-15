@@ -19,8 +19,9 @@
     verbose="true"
 >
     <testsuites>
-        <testsuite name="Palpalani Test Suite">
-            <directory>tests</directory>
+        <testsuite name="palPalani Test Suite">
+            <directory suffix="Test.php">tests/Unit</directory>
+            <exclude>ThreeDCartTestCase.php</exclude>
         </testsuite>
     </testsuites>
     <coverage>
