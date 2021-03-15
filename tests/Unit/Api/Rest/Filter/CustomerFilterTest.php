@@ -16,43 +16,43 @@ class CustomerFilterTest extends ThreeDCartTestCase
 {
     /** @var CustomerFilterList */
     private $subjectUnderTest;
-    
-    public function setup()
+
+    public function setup(): void
     {
         $this->subjectUnderTest = new CustomerFilterList();
     }
-    
-    public function testSetFilterLimit()
+
+    public function testSetFilterLimit(): void
     {
         $this->subjectUnderTest->filterLimit(new Limit(3));
-        
+
         $httpPostList = $this->subjectUnderTest->getHttpParameterList();
-        
+
         $this->assertEquals(1, $httpPostList->count()->getIntValue());
     }
-    
-    public function testSetFilterCountOnly()
+
+    public function testSetFilterCountOnly(): void
     {
         $this->subjectUnderTest->filterCountOnly(new BooleanValueObject(true));
-        
+
         $httpPostList = $this->subjectUnderTest->getHttpParameterList();
-        
+
         $this->assertEquals([CustomerFilterList::FILTER_COUNTONLY => true], $httpPostList->getSimpleParameterArray());
     }
-    
-    public function testMultipleFilter()
+
+    public function testMultipleFilter(): void
     {
         $this->subjectUnderTest->filterCountOnly(new BooleanValueObject(true));
         $this->subjectUnderTest->filterLimit(new Limit(2));
-        
+
         $httpPostList = $this->subjectUnderTest->getHttpParameterList();
-        
+
         $this->assertEquals([
             CustomerFilterList::FILTER_COUNTONLY => true,
             CustomerFilterList::FILTER_LIMIT => 2,
         ], $httpPostList->getSimpleParameterArray());
     }
-    
+
     /**
      * @param array  $expectedResult
      * @param string $method
@@ -60,19 +60,19 @@ class CustomerFilterTest extends ThreeDCartTestCase
      *
      * @dataProvider provideFilterCases
      */
-    public function testAllFilter($expectedResult, $method, $parameterValue)
+    public function testAllFilter($expectedResult, $method, $parameterValue): void
     {
         $this->subjectUnderTest->{$method}($parameterValue);
-        
+
         $httpPostList = $this->subjectUnderTest->getHttpParameterList();
-        
+
         $this->assertEquals($expectedResult, $httpPostList->getSimpleParameterArray());
     }
-    
+
     /**
      * @return array
      */
-    public function provideFilterCases()
+    public function provideFilterCases(): array
     {
         return [
             'limit' => [
@@ -142,22 +142,22 @@ class CustomerFilterTest extends ThreeDCartTestCase
             ],
         ];
     }
-    
-    public function testIsEmpty()
+
+    public function testIsEmpty(): void
     {
         $this->assertEquals(true, $this->subjectUnderTest->isEmpty()->getBoolValue());
         $this->subjectUnderTest->filterEmail(new StringValueObject('test'));
         $this->assertEquals(false, $this->subjectUnderTest->isEmpty()->getBoolValue());
     }
-    
-    public function testCount()
+
+    public function testCount(): void
     {
         $this->assertEquals(0, $this->subjectUnderTest->count()->getIntValue());
         $this->subjectUnderTest->filterEmail(new StringValueObject('test'));
         $this->assertEquals(1, $this->subjectUnderTest->count()->getIntValue());
     }
-    
-    public function testClear()
+
+    public function testClear(): void
     {
         $this->subjectUnderTest->filterEmail(new StringValueObject('test'));
         $this->subjectUnderTest->clear();
