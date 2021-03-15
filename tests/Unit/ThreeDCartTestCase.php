@@ -58,7 +58,7 @@ class ThreeDCartTestCase extends TestCase
         $className = explode('\\', get_class($this));
         array_shift($className);
         unset($className[0]);
-        $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Mocks' . DIRECTORY_SEPARATOR . implode(
+        $path = __DIR__ . DIRECTORY_SEPARATOR . 'Mocks' . DIRECTORY_SEPARATOR . implode(
             DIRECTORY_SEPARATOR,
             $className
         ) . DIRECTORY_SEPARATOR . $mock . DIRECTORY_SEPARATOR . $part;
