@@ -7,13 +7,14 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ThreeDCartTestCase
  *
  * @package tests\Unit
  */
-class ThreeDCartTestCase extends \PHPUnit_Framework_TestCase
+class ThreeDCartTestCase extends TestCase
 {
     /**
      * @param string $mock
@@ -25,10 +26,10 @@ class ThreeDCartTestCase extends \PHPUnit_Framework_TestCase
         $mock = new MockHandler([
             $this->createMockedResponse($mock),
         ]);
-        
+
         return new HttpClient(['handler' => HandlerStack::create($mock)]);
     }
-    
+
     /**
      * @param string $mock
      *
@@ -38,10 +39,10 @@ class ThreeDCartTestCase extends \PHPUnit_Framework_TestCase
     {
         $header = explode("\n", $this->loadMock($mock, 'header'));
         preg_match('#HTTP/1.1 (\d*) #', $header[0], $match);
-        
+
         return new Response($match[1], $header, $this->loadMock($mock, 'response.xml'));
     }
-    
+
     /**
      * loads mock from file system
      *
@@ -64,10 +65,10 @@ class ThreeDCartTestCase extends \PHPUnit_Framework_TestCase
         if (! file_exists($path)) {
             throw new \Exception('Mock files are missing: ' . $mock . ' : ' . $part);
         }
-        
+
         return file_get_contents($path);
     }
-    
+
     /**
      * @return string
      */
@@ -75,7 +76,7 @@ class ThreeDCartTestCase extends \PHPUnit_Framework_TestCase
     {
         return __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR;
     }
-    
+
     /**
      * Call protected/private method of a class.
      *
@@ -90,7 +91,7 @@ class ThreeDCartTestCase extends \PHPUnit_Framework_TestCase
         $reflection = new \ReflectionClass(get_class($object));
         $method = $reflection->getMethod($methodName);
         $method->setAccessible(true);
-        
+
         return $method->invokeArgs($object, $parameters);
     }
 }
