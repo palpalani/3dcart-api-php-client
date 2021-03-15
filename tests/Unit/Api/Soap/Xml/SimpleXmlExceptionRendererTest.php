@@ -14,17 +14,17 @@ class SimpleXmlExceptionRendererTest extends ThreeDCartTestCase
 {
     /** @var SimpleXmlExceptionRenderer */
     public $subjectUnderTest;
-    
-    public function setUp()
+
+    public function setUp(): void
     {
         $this->subjectUnderTest = new SimpleXmlExceptionRenderer();
     }
-    
+
     public function testParseLibXMLErrors()
     {
         libxml_use_internal_errors(true);
         libxml_clear_errors();
-        
+
         $messages = '';
 
         try {
@@ -32,9 +32,9 @@ class SimpleXmlExceptionRendererTest extends ThreeDCartTestCase
         } catch (\Exception $ex) {
             $messages = $this->subjectUnderTest->getErrorMessage(libxml_get_errors());
         }
-        
+
         $testMessages = explode("\n", $messages);
-        
+
         $this->assertCount(4, $testMessages);
         $this->assertEquals(defined('PHP_WINDOWS_VERSION_MAJOR')
             ? 'Fatal Error 65: Blank needed here on line 1 in column 20'
@@ -58,55 +58,55 @@ class SimpleXmlExceptionRendererTest extends ThreeDCartTestCase
             $testMessages[3]
         );
     }
-    
+
     public function testParseLibXMLWarning()
     {
         $messages = $this->subjectUnderTest->getErrorMessage([
             $this->createLibXMLError(LIBXML_ERR_WARNING, 11, 12, 'test', 13),
         ]);
-        
+
         $testMessages = explode("\n", $messages);
-        
+
         $this->assertCount(1, $testMessages);
         $this->assertEquals($testMessages[0], 'Warning 11: test on line 13 in column 12');
     }
-    
+
     public function testParseLibXMLError()
     {
         $messages = $this->subjectUnderTest->getErrorMessage([
             $this->createLibXMLError(LIBXML_ERR_ERROR, 14, 15, 'test', 16),
         ]);
-        
+
         $testMessages = explode("\n", $messages);
-        
+
         $this->assertCount(1, $testMessages);
         $this->assertEquals($testMessages[0], 'Error 14: test on line 16 in column 15');
     }
-    
+
     public function testParseLibXMLFatalError()
     {
         $messages = $this->subjectUnderTest->getErrorMessage([
             $this->createLibXMLError(LIBXML_ERR_FATAL, 14, 15, 'test', 16),
         ]);
-        
+
         $testMessages = explode("\n", $messages);
-        
+
         $this->assertCount(1, $testMessages);
         $this->assertEquals($testMessages[0], 'Fatal Error 14: test on line 16 in column 15');
     }
-    
+
     public function testErrorLevelNotAnInt()
     {
         $messages = $this->subjectUnderTest->getErrorMessage([
             $this->createLibXMLError('wrong datatype', 14, 15, 'test', 16),
         ]);
-        
+
         $testMessages = explode("\n", $messages);
-        
+
         $this->assertCount(1, $testMessages);
         $this->assertEquals($testMessages[0], ' 14: test on line 16 in column 15');
     }
-    
+
     /**
      * @param int    $level
      * @param int    $code
@@ -126,7 +126,7 @@ class SimpleXmlExceptionRendererTest extends ThreeDCartTestCase
         $libXMLError->message = $message;
         $libXMLError->file = $file;
         $libXMLError->line = $line;
-        
+
         return $libXMLError;
     }
 }

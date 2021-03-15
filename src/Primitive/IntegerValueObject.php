@@ -11,9 +11,9 @@ class IntegerValueObject
 {
     /** @var int */
     private $value;
-    
+
     /**
-     * @param int $value
+     * @param int|string $value
      *
      * @throws \InvalidArgumentException
      */
@@ -24,18 +24,18 @@ class IntegerValueObject
                 'parameter $value is not of type int. type is ' . gettype($value)
             );
         }
-        
+
         $intValue = (int)$value;
-        
+
         if (((String)$intValue) != (String)$value) {
             throw new \InvalidArgumentException(
                 'parameter $value is not of type int. type is ' . gettype($value)
             );
         }
-        
+
         $this->value = $intValue;
     }
-    
+
     /**
      * @return int
      */
@@ -43,7 +43,7 @@ class IntegerValueObject
     {
         return $this->value;
     }
-    
+
     /**
      * @return string
      */

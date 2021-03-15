@@ -26,20 +26,20 @@ class ServicesTest extends ThreeDCartTestCase
 {
     /** @var AuthenticationServiceInterface */
     private $authenticationService;
-    
-    public function setUp()
+
+    public function setUp(): void
     {
         $credentials = [];
-        
+
         include(__DIR__ . '/../../../../../integration_credentials.php');
-        
+
         $this->authenticationService = new AuthenticationService(
             new PrivateKey($credentials['privateKey']),
             new Token($credentials['token']),
             new SecureUrl($credentials['secureUrl'])
         );
     }
-    
+
     /**
      * @param string   $expectedObjectClass
      * @param string   $serviceClass
@@ -66,12 +66,12 @@ class ServicesTest extends ThreeDCartTestCase
         $generatedObjects = $subjectUnderTest->{$serviceMethod}(
             ...$methodParameters
         );
-        
+
         foreach ($generatedObjects as $generatedObject) {
             $this->assertInstanceOf($expectedObjectClass, $generatedObject);
         }
     }
-    
+
     /**
      * @return array
      */

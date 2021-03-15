@@ -25,14 +25,14 @@ class GuzzleTest extends ThreeDCartTestCase
 {
     /** @var Guzzle */
     private $subjectUnderTest;
-    
+
     /** @var ClientInterface|\PHPUnit_Framework_MockObject_MockObject */
     private $clientInterfaceMock;
-    
+
     /** @var AuthenticationServiceInterface|\PHPUnit_Framework_MockObject_MockObject */
     private $authenticationMock;
-    
-    public function setUp()
+
+    public function setUp(): void
     {
         $this->clientInterfaceMock = $this->getMockBuilder(ClientInterface::class)
                                           ->getMockForAbstractClass();
@@ -42,13 +42,13 @@ class GuzzleTest extends ThreeDCartTestCase
         $this->authenticationMock = $this->getMockBuilder(AuthenticationServiceInterface::class)
                                          ->getMockForAbstractClass();
         $this->authenticationMock->method('getHttpHeaders')->willReturn(new HttpHeader([]));
-        
+
         $this->subjectUnderTest = new Guzzle(
             $this->clientInterfaceMock,
             $this->authenticationMock
         );
     }
-    
+
     /**
      * @param array             $expectedGuzzleCallParameter
      * @param HttpMethod        $httpMethod
@@ -68,7 +68,7 @@ class GuzzleTest extends ThreeDCartTestCase
         $this->clientInterfaceMock->method('request')->with(
             ...$expectedGuzzleCallParameter
         );
-        
+
         $this->subjectUnderTest->send(
             $httpMethod,
             $apiPathAppendix,
@@ -76,7 +76,7 @@ class GuzzleTest extends ThreeDCartTestCase
             $httpPostParameterList
         );
     }
-    
+
     public function provideRequests()
     {
         $httpParameterList = new HttpParameterList();
@@ -86,7 +86,7 @@ class GuzzleTest extends ThreeDCartTestCase
                 new StringValueObject('testValue')
             )
         );
-        
+
         return [
             'default' => [
                 [
@@ -197,7 +197,7 @@ class GuzzleTest extends ThreeDCartTestCase
             ],
         ];
     }
-    
+
     public function testSendConnectException()
     {
         /** @var RequestInterface $requestInterface */
@@ -210,7 +210,7 @@ class GuzzleTest extends ThreeDCartTestCase
                                           $requestInterface
                                       )
                                   ));
-        
+
         $this->expectException(ConnectException::class);
         $this->subjectUnderTest->send(
             new HttpMethod(HttpMethod::HTTP_METHOD_GET),
@@ -219,7 +219,7 @@ class GuzzleTest extends ThreeDCartTestCase
             new HttpParameterList()
         );
     }
-    
+
     public function testSendClientException()
     {
         /** @var RequestInterface $requestInterface */
@@ -232,7 +232,7 @@ class GuzzleTest extends ThreeDCartTestCase
                                           $requestInterface
                                       )
                                   ));
-        
+
         $this->expectException(ClientException::class);
         $this->subjectUnderTest->send(
             new HttpMethod(HttpMethod::HTTP_METHOD_GET),
@@ -241,7 +241,7 @@ class GuzzleTest extends ThreeDCartTestCase
             new HttpParameterList()
         );
     }
-    
+
     public function testSendServerException()
     {
         /** @var RequestInterface $requestInterface */
@@ -254,7 +254,7 @@ class GuzzleTest extends ThreeDCartTestCase
                                           $requestInterface
                                       )
                                   ));
-        
+
         $this->expectException(ServerException::class);
         $this->subjectUnderTest->send(
             new HttpMethod(HttpMethod::HTTP_METHOD_GET),

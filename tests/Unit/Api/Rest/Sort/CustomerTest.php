@@ -15,11 +15,11 @@ class CustomerTest extends ThreeDCartTestCase
 {
     /** @var OrderBy */
     private $subjectUnderTest;
-    
+
     /** @var SortOrder */
     private $sortOrder;
-    
-    public function setup()
+
+    public function setup(): void
     {
         $this->sortOrder = new SortOrder(SortOrder::SORTING_DESC);
         $this->subjectUnderTest = new OrderBy(
@@ -29,7 +29,7 @@ class CustomerTest extends ThreeDCartTestCase
             $this->sortOrder
         );
     }
-    
+
     public function testGetter()
     {
         $this->assertEquals(new SortOrder(SortOrder::SORTING_DESC), $this->subjectUnderTest->getSortOrder());
@@ -38,7 +38,7 @@ class CustomerTest extends ThreeDCartTestCase
             $this->subjectUnderTest->getOrderByField()
         );
     }
-    
+
     public function testDefaultSortOrderParameter()
     {
         $subjectUnderTest = new OrderBy(

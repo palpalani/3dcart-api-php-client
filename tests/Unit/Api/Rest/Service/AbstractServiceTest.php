@@ -24,8 +24,8 @@ class AbstractServiceTest extends ThreeDCartTestCase
     private $subjectUnderTest;
     /** @var RequestInterface|\PHPUnit_Framework_MockObject_MockObject */
     private $requestInterfaceMock;
-    
-    public function setUp()
+
+    public function setUp(): void
     {
         $this->requestInterfaceMock = $this->getRequestInterfaceMock();
         $this->subjectUnderTest = $this->getMockBuilder(AbstractService::class)
@@ -34,7 +34,7 @@ class AbstractServiceTest extends ThreeDCartTestCase
                                            ])
                                            ->getMockForAbstractClass();
     }
-    
+
     /**
      * @param array               $expectedParameterList
      * @param SelectListInterface $selectListInterface
@@ -54,18 +54,18 @@ class AbstractServiceTest extends ThreeDCartTestCase
                 '[{"CustomerID" : 123}]'
             )
         );
-        
+
         $this->requestInterfaceMock->method('send')->with(
             ...$expectedParameterList
         );
-        
+
         $this->invokeMethod($this->subjectUnderTest, 'generateRequestParameter', [
             $selectListInterface,
             $filterInterface,
             $sortInterface,
         ]);
     }
-    
+
     /**
      * @return array
      */
@@ -78,7 +78,7 @@ class AbstractServiceTest extends ThreeDCartTestCase
         $sortInterfaceMock->method('getQueryString')->willReturn(
             new StringValueObject('test asc,test2 desc')
         );
-        
+
         $selectInterfaceMock = $this->getMockBuilder(SelectListInterface::class)->getMockForAbstractClass();
         $selectInterfaceMock->method('isEmpty')->willReturn(
             new BooleanValueObject(false)
@@ -86,7 +86,7 @@ class AbstractServiceTest extends ThreeDCartTestCase
         $selectInterfaceMock->method('getQueryString')->willReturn(
             new StringValueObject('test,test2')
         );
-        
+
         $filterInterfaceMock = $this->getMockBuilder(FilterListInterface::class)->getMockForAbstractClass();
         $filterInterfaceMock->method('getHttpParameterList')->willReturn(
             new HttpParameterList(
@@ -98,7 +98,7 @@ class AbstractServiceTest extends ThreeDCartTestCase
                 ]
             )
         );
-        
+
         return [
             'default parameter' => [
                 [
@@ -193,7 +193,7 @@ class AbstractServiceTest extends ThreeDCartTestCase
             ],
         ];
     }
-    
+
     /**
      * @return RequestInterface|\PHPUnit_Framework_MockObject_MockObject
      */

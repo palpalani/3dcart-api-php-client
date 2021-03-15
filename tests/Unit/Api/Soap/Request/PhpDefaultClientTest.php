@@ -24,8 +24,8 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
 {
     /** @var PhpDefaultClient */
     private $subjectUnderTest;
-    
-    public function setup()
+
+    public function setup(): void
     {
         $this->subjectUnderTest = $this->getMockBuilder(PhpDefaultClient::class)
                                        ->setMethods(null)
@@ -39,7 +39,7 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
                                        ->getMock()
         ;
     }
-    
+
     /**
      * @param string $method
      * @param string $soapMethodName
@@ -50,18 +50,18 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
     public function testEmptyRequest($method, $soapMethodName, $parameters)
     {
         $this->subjectUnderTest->setSoapClient($this->getSoapClientEmptyResponse($soapMethodName));
-        
+
         $this->expectException(ResponseBodyEmptyException::class);
         call_user_func_array([$this->subjectUnderTest, $method], $parameters);
     }
-    
+
     /**
      * @return array
      */
     public function provideMethods()
     {
         $emptyStringValueObject = new StringValueObject('');
-        
+
         return [
             [
                 'getProduct',
@@ -189,7 +189,7 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
             ],
         ];
     }
-    
+
     /**
      * @param string $method
      *
@@ -199,10 +199,10 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
     {
         $soapClientMock = $this->getSoapClient();
         $soapClientMock->method($method)->willReturn(new \stdClass());
-        
+
         return $soapClientMock;
     }
-    
+
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject | \SoapClient
      */
@@ -210,7 +210,7 @@ class PhpDefaultClientTest extends ThreeDCartTestCase
     {
         $soapClientMock = $this->getMockFromWsdl($this->getRootPath() . 'soap-api'
             . DIRECTORY_SEPARATOR . 'wsdl' . DIRECTORY_SEPARATOR . 'api.wsdl');
-        
+
         return $soapClientMock;
     }
 }

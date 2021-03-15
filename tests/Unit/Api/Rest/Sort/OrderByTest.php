@@ -15,23 +15,23 @@ class OrderByTest extends ThreeDCartTestCase
 {
     /** @var OrderBy */
     private $subjectUnderTest;
-    
+
     /** @var FieldInterface */
     private $fieldInterfaceMock;
-    
-    public function setup()
+
+    public function setup(): void
     {
         $this->fieldInterfaceMock = $this->getMockBuilder(FieldInterface::class)->getMockForAbstractClass();
         $this->fieldInterfaceMock->method('getStringValueObject')->willReturn(
             new StringValueObject('test')
         );
-        
+
         $this->subjectUnderTest = new OrderBy(
             $this->fieldInterfaceMock,
             new SortOrder(SortOrder::SORTING_ASC)
         );
     }
-    
+
     public function testGetter()
     {
         $this->assertEquals(new StringValueObject('test'), $this->subjectUnderTest->getOrderByField());

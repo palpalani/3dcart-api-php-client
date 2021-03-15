@@ -16,8 +16,8 @@ class RequestExceptionTest extends ThreeDCartTestCase
 {
     /** @var RequestException */
     private $subjectUnderTest;
-    
-    public function setup()
+
+    public function setup(): void
     {
         $this->subjectUnderTest = new RequestException(
             new StringValueObject('test message'),
@@ -26,7 +26,7 @@ class RequestExceptionTest extends ThreeDCartTestCase
             new IntegerValueObject(123)
         );
     }
-    
+
     public function testGetter()
     {
         $this->assertEquals('test message', $this->subjectUnderTest->getMessage());

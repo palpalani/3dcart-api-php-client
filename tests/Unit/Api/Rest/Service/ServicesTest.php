@@ -23,12 +23,12 @@ class ServicesTest extends ThreeDCartTestCase
 {
     /** @var RequestInterface|\PHPUnit_Framework_MockObject_MockObject */
     private $requestInterfaceMock;
-    
-    public function setUp()
+
+    public function setUp(): void
     {
         $this->requestInterfaceMock = $this->getRequestInterfaceMock();
     }
-    
+
     /**
      * @param string   $expectedObjectClass
      * @param array    $expectedValues
@@ -54,24 +54,24 @@ class ServicesTest extends ThreeDCartTestCase
                 $responseJson
             )
         );
-        
+
         $subjectUnderTest = new $serviceClass(
             $this->requestInterfaceMock
         );
-        
+
         $generatedObjects = $subjectUnderTest->{$serviceMethod}(
             ...$methodParameters
         );
-        
+
         $this->assertInstanceOf($expectedObjectClass, $generatedObjects[0]);
         $this->assertInstanceOf($expectedObjectClass, $generatedObjects[1]);
-        
+
         $this->assertEquals($expectedValues, [
             $generatedObjects[0]->{$responseObjectFieldName},
             $generatedObjects[1]->{$responseObjectFieldName},
         ]);
     }
-    
+
     /**
      * @return array
      */
@@ -145,7 +145,7 @@ class ServicesTest extends ThreeDCartTestCase
             ],
         ];
     }
-    
+
     /**
      * @return RequestInterface|\PHPUnit_Framework_MockObject_MockObject
      */

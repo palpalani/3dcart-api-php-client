@@ -16,19 +16,19 @@ class SelectListTest extends ThreeDCartTestCase
 {
     /** @var SelectList */
     private $subjectUnderTest;
-    
-    public function setup()
+
+    public function setup(): void
     {
         $this->subjectUnderTest = new SelectList();
     }
-    
+
     public function testGenerationOfQueryStringOneEntry()
     {
         $this->subjectUnderTest->addSelect($this->createSelectInterfaceMock(new StringValueObject('test')));
-        
+
         $this->assertEquals(new StringValueObject('test'), $this->subjectUnderTest->getQueryString());
     }
-    
+
     public function testGenerationOfQueryStringTwoEntries()
     {
         $this->subjectUnderTest->addSelect($this->createSelectInterfaceMock(
@@ -37,13 +37,13 @@ class SelectListTest extends ThreeDCartTestCase
         $this->subjectUnderTest->addSelect($this->createSelectInterfaceMock(
             new StringValueObject('second select')
         ));
-        
+
         $this->assertEquals(
             new StringValueObject('first select,second select'),
             $this->subjectUnderTest->getQueryString()
         );
     }
-    
+
     /**
      * @param StringValueObject $selectValue
      *
@@ -55,7 +55,7 @@ class SelectListTest extends ThreeDCartTestCase
         $select = $this->getMockBuilder(SelectInterface::class)
                        ->getMockForAbstractClass();
         $select->method('getField')->willReturn($selectValue);
-        
+
         return $select;
     }
 }

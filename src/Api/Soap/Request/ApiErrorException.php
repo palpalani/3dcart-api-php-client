@@ -41,10 +41,10 @@ class ApiErrorException extends ResponseInvalidException
         48 => 'Order Status Not Found',
         49 => 'Order Not Found',
     ];
-    
+
     /**
      * @param string $message
-     * @param int    $threeDCartSoapErrorCode
+     * @param int|string    $threeDCartSoapErrorCode
      */
     public function __construct($message, $threeDCartSoapErrorCode)
     {

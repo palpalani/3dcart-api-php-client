@@ -16,14 +16,14 @@ class CustomerTest extends ThreeDCartTestCase
 {
     /** @var Select */
     private $subjectUnderTest;
-    
-    public function setup()
+
+    public function setup(): void
     {
         $this->subjectUnderTest = new Select(
             new Customer(Customer::BILLINGCITY)
         );
     }
-    
+
     public function testGetter()
     {
         $this->assertEquals(

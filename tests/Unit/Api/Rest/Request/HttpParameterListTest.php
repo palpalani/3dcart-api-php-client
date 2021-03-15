@@ -16,12 +16,12 @@ class HttpParameterListTest extends ThreeDCartTestCase
 {
     /** @var HttpParameterList */
     private $subjectUnderTest;
-    
-    public function setup()
+
+    public function setup(): void
     {
         $this->subjectUnderTest = new HttpParameterList();
     }
-    
+
     public function testCounting()
     {
         $this->assertEquals(0, $this->subjectUnderTest->count()->getIntValue());
@@ -33,7 +33,7 @@ class HttpParameterListTest extends ThreeDCartTestCase
         );
         $this->assertEquals(1, $this->subjectUnderTest->count()->getIntValue());
     }
-    
+
     public function testIsEmpty()
     {
         $this->assertEquals(true, $this->subjectUnderTest->isEmpty()->getBoolValue());
@@ -45,7 +45,7 @@ class HttpParameterListTest extends ThreeDCartTestCase
         );
         $this->assertEquals(false, $this->subjectUnderTest->isEmpty()->getBoolValue());
     }
-    
+
     public function testAddParameterAndGet()
     {
         $this->subjectUnderTest->addParameter(
@@ -54,12 +54,12 @@ class HttpParameterListTest extends ThreeDCartTestCase
                 new StringValueObject('testValue')
             )
         );
-        
+
         $simpleArray = $this->subjectUnderTest->getSimpleParameterArray();
-        
+
         $this->assertEquals(['testKey' => 'testValue'], $simpleArray);
     }
-    
+
     public function testClear()
     {
         $this->assertEquals(true, $this->subjectUnderTest->isEmpty()->getBoolValue());
@@ -69,7 +69,7 @@ class HttpParameterListTest extends ThreeDCartTestCase
                 new StringValueObject('testValue')
             )
         );
-        
+
         $this->assertEquals(false, $this->subjectUnderTest->isEmpty()->getBoolValue());
         $this->subjectUnderTest->clear();
         $this->assertEquals(true, $this->subjectUnderTest->isEmpty()->getBoolValue());

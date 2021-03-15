@@ -14,12 +14,12 @@ class AbstractResourceTest extends ThreeDCartTestCase
 {
     /** @var AbstractResource */
     private $subjectUnderTest;
-    
-    public function setUp()
+
+    public function setUp(): void
     {
         $this->subjectUnderTest = $this->getMockBuilder(AbstractResource::class)->getMockForAbstractClass();
     }
-    
+
     /**
      * @param string $expectedResourceClass
      * @param string $jsonData
@@ -30,10 +30,10 @@ class AbstractResourceTest extends ThreeDCartTestCase
     {
         /** @var AbstractResource $expectedResourceClass */
         $resourceClass = $expectedResourceClass::fromArray(json_decode($jsonData, true));
-        
+
         $this->assertEquals($expectedResourceClass, get_class($resourceClass));
     }
-    
+
     /**
      * @return array
      */
@@ -62,7 +62,7 @@ class AbstractResourceTest extends ThreeDCartTestCase
             ],
         ];
     }
-    
+
     /**
      * @param string $expectedResourceClass
      * @param string $jsonData
@@ -73,12 +73,12 @@ class AbstractResourceTest extends ThreeDCartTestCase
     {
         /** @var AbstractResource $expectedResourceClass */
         $resources = $expectedResourceClass::fromList(json_decode($jsonData, true));
-        
+
         foreach ($resources as $resource) {
             $this->assertEquals($expectedResourceClass, get_class($resource));
         }
     }
-    
+
     /**
      * @return array
      */

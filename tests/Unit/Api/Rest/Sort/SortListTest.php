@@ -15,40 +15,40 @@ class SortListTest extends ThreeDCartTestCase
 {
     /** @var SortList */
     private $subjectUnderTest;
-    
-    public function setup()
+
+    public function setup(): void
     {
         $this->subjectUnderTest = new SortList();
     }
-    
+
     public function testGenerationOfQueryStringOneEntry()
     {
         $this->subjectUnderTest->addOrderBy($this->getOrderByInterfaceMock(
             new StringValueObject('test'),
             new SortOrder(SortOrder::SORTING_ASC)
         ));
-        
+
         $this->assertEquals(new StringValueObject('test asc'), $this->subjectUnderTest->getQueryString());
     }
-    
+
     public function testGenerationOfQueryStringTwoEntries()
     {
         $this->subjectUnderTest->addOrderBy($this->getOrderByInterfaceMock(
             new StringValueObject('first_order_by'),
             new SortOrder(SortOrder::SORTING_ASC)
         ));
-        
+
         $this->subjectUnderTest->addOrderBy($this->getOrderByInterfaceMock(
             new StringValueObject('second_order_by'),
             new SortOrder(SortOrder::SORTING_DESC)
         ));
-        
+
         $this->assertEquals(
             new StringValueObject('first_order_by asc,second_order_by desc'),
             $this->subjectUnderTest->getQueryString()
         );
     }
-    
+
     /**
      * @param StringValueObject $field
      * @param SortOrder         $sortOrder
@@ -66,7 +66,7 @@ class SortListTest extends ThreeDCartTestCase
                                      ->getMockForAbstractClass();
         $orderByInterfaceMock->method('getOrderByField')->willReturn($field);
         $orderByInterfaceMock->method('getSortOrder')->willReturn($sortOrder);
-        
+
         return $orderByInterfaceMock;
     }
 }
