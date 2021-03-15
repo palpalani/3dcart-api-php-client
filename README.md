@@ -13,7 +13,7 @@ Code Style: PSR-1 (http://www.php-fig.org/psr/psr-1/) / PSR-2 (http://www.php-fi
 
 Autoloading: PSR-4 (http://www.php-fig.org/psr/psr-4/)
 
-Minimum PHP Version: 7.2
+Minimum PHP Version: 7.3
 
 ## Example usage
 
